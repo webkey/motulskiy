@@ -82,6 +82,8 @@
 
 .content
 	margin: 0 0 0 $sidebar-left-width
+	padding-left: $layout-grid-space
+	padding-right: $layout-grid-space
 	min-height: 50px
 
 	.home-page &
@@ -95,6 +97,7 @@
 	float: left
 	margin: 0 0 0 -100%
 	width: $sidebar-left-width
+	padding-left: $layout-grid-space
 	background: lightgray
 
 .footer
@@ -106,15 +109,20 @@
 .layout
 	max-width: $layout-width
 	padding: 0 $layout-space-horizontal
-	margin: 0 auto
 
+.layout-inside
+	margin-left: $layout-grid-space
+	margin-right: $layout-grid-space
 
 /*MAIN BLOCKS end*/
 
 /*HEADER*/
-.header__holder
-	padding: 10px 0
-	+clear
+.header
+	border-bottom: 1px solid $color-border
+
+	&__holder
+		padding: 10px 0
+		+clear
 
 /*HEADER end*/
 
