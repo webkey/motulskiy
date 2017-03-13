@@ -1,0 +1,64 @@
+@@include('_head.tpl', {
+	"title": "Главная",
+	"pageClass": ""
+})
+<div class="wrapper">
+	<div class="layout">
+		<div class="frame">
+			<div class="frame__holder">
+				<div class="frame__photo">
+					<img src="img/photo-main.png" alt="image description" />
+				</div>
+			</div>
+		</div>
+		<div class="page">
+			<div class="cross">
+				<!--HEADER-->
+				@@include('_header.tpl', {
+					"mainNavItemActive": "photos"
+				})
+				<!--HEADER end-->
+				<!--MAIN-->
+				<div class="main">
+					<div class="main__holder">
+						<!--CONTENT-->
+						<div class="content-wrap">
+							<div class="content">
+								<!--breadcrumbs-->
+								@@include('_breadcrumbs.tpl')
+								<!--breadcrumbs end-->
+
+								<h1>Участие в научных мероприятиях</h1>
+								<div class="years">
+									<ul class="years__list">
+										<li><a href="#"><span>2017</span></a></li>
+										<li><a href="#"><span>2016</span></a></li>
+										<li><a href="#"><span>2015</span></a></li>
+										<li><a href="#"><span>2014</span></a></li>
+										<li><a href="#"><span>2013</span></a></li>
+										<li><a href="#"><span>2012</span></a></li>
+										<li><a href="#"><span>2011</span></a></li>
+										<li><a href="#"><span>2010</span></a></li>
+										<li><a href="#"><span>2009</span></a></li>
+										<li><a href="#"><span>2008</span></a></li>
+										<li><a href="#"><span>2007</span></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--CONTENT end-->
+
+						<!--SIDEBAR-->
+						@@include('_sidebar.tpl', {
+							"menuItemActive": "1"
+						})
+						<!--SIDEBAR-->
+					</div>
+				</div>
+				<!--MAIN end-->
+			</div>
+			@@include('_footer.tpl')
+		</div>
+	</div>
+</div>
+@@include('_foot.tpl')

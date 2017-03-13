@@ -30,6 +30,42 @@
 	overflow: hidden
 	position: relative
 
+.cross
+	min-height: 100vh
+
+.frame
+	position: fixed
+	height: 100vh
+	width: 640px
+	overflow-x: hidden
+	overflow-y: auto
+
+	&__holder
+		min-height: 100%
+		position: relative
+		z-index: 1
+		+linear-gradient(to right, #019875 0%, #108982 44%, #2e6b9c 100%)
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: url(../img/frame-mask.png)
+			z-index: -1
+
+	&__photo
+		position: absolute
+		right: 50px
+		bottom: 0
+
+.page
+
+	.frame + &
+		margin-left: 640px
+
 .main
 	padding: 30px 0 130px
 	position: relative
@@ -45,7 +81,7 @@
 	width: 100%
 
 .content
-	margin: 0 260px 0 340px
+	margin: 0 0 0 $sidebar-left-width
 	min-height: 50px
 
 	.home-page &
@@ -56,28 +92,22 @@
 	z-index: 5
 
 .sidebar
-	display: inline
 	float: left
 	margin: 0 0 0 -100%
-	width: 320px
-
-.aside
-	display: inline
-	float: right
-	margin: 0 0 0 -240px
-	width: 240px
+	width: $sidebar-left-width
+	background: lightgray
 
 .footer
-	margin: -100px auto 0
-	height: 100px
+	height: 0
 	position: relative
 	clear: both
-	z-index: 5
+	z-index: 100
 
 .layout
 	max-width: $layout-width
 	padding: 0 $layout-space-horizontal
 	margin: 0 auto
+
 
 /*MAIN BLOCKS end*/
 
@@ -86,21 +116,6 @@
 	padding: 10px 0
 	+clear
 
-/*logo*/
-.logo
-	float: left
-	background: url(../img/logo.png) no-repeat
-	width: 220px
-	height: 85px
-	text-indent: -9999px
-	overflow: hidden
-	margin: 0
-
-	a
-		display: block
-		height: 100%
-
-/*logo end*/
 /*HEADER end*/
 
 /*MAIN*/
@@ -157,8 +172,23 @@
 /*ASIDE end*/
 
 /*FOOTER*/
-.footer__holder
-	padding: 10px 0 0
+.footer
+	color: #b2b2b2
+
+	.layout-inside
+		position: relative
+
+	@at-root
+	.footer__holder
+		position: absolute
+		overflow: hidden
+		cursor: default
+		left: $sidebar-left-width
+		bottom: 0
+		width: calc(100% - #{$sidebar-left-width})
+		top: auto
+		right: auto
+
 /*FOOTER end*/
 
 /*======================================================*/

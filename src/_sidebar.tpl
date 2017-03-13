@@ -3,39 +3,34 @@
 		<!--menu-->
 		<div class="menu">
 			<ul class="menu__list">
-				@@loop('_menu-items.tpl', [
-					{
-						"menuItem": "about",
-						"menuItemText": "About",
-						"menuItemActive": "@@menuItemActive"
-					},{
-						"menuItem": "news",
-						"menuItemText": "News",
-						"menuItemActive": "@@menuItemActive"
-					},{
-						"menuItem": "contact",
-						"menuItemText": "Contact",
-						"menuItemActive": "@@menuItemActive"
-					},{
-						"menuItem": "photos",
-						"menuItemText": "Photos",
-						"menuItemActive": "@@menuItemActive"
-					},{
-						"menuItem": "faq",
-						"menuItemText": "FAQ",
-						"menuItemActive": "@@menuItemActive"
-					}
-				])
+				<li>
+					<a href="#"><span>Научная деятельность</span></a>
+					<ul>
+						<li>
+							<a href="#"><span>Защита докторской диссертации</span></a>
+						</li>
+						<li>
+							<a href="#"><span>Презентации научных трудов</span></a>
+						</li>
+						<li class="current">
+							<a href="#"><span>Участие в научных мероприятиях</span></a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#"><span>Социокультурная деятельность</span></a>
+				</li>
+				<li>
+					<a href="#"><span>Международная деятельность</span></a>
+				</li>
+				<li>
+					<a href="#"><span>Учебно-педагогическая деятельность</span></a>
+				</li>
+				<li>
+					<a href="#"><span>Досуг</span></a>
+				</li>
 			</ul>
 		</div>
 		<!--menu end-->
-		<div class="sidebar__widget">
-			<h3>Title of Sidebar Widget</h3>
-			Content of Sidebar Widget
-		</div>
-		<div class="sidebar__widget">
-			<h3>Title of Sidebar Widget</h3>
-			Content of Sidebar Widget
-		</div>
 	</div>
 </aside>

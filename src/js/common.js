@@ -1,5 +1,5 @@
 /**
- * resize only width
+ * !resize only width
  * */
 var resizeByWidth = true;
 
@@ -15,7 +15,7 @@ $(window).resize(function () {
 /*resize only width end*/
 
 /**
- * device detected
+ * !device detected
  * */
 var DESKTOP = device.desktop();
 //console.log('DESKTOP: ', DESKTOP);
@@ -26,7 +26,7 @@ var TABLET = device.tablet();
 /*device detected end*/
 
 /**
- *  placeholder
+ *  !placeholder
  *  */
 function placeholderInit(){
 	$('[placeholder]').placeholder();
@@ -34,7 +34,7 @@ function placeholderInit(){
 /*placeholder end*/
 
 /**
- * print
+ * !print
  * */
 function printShow() {
 	$('.view-print').on('click', function (e) {
@@ -44,9 +44,36 @@ function printShow() {
 }
 /*print end*/
 
+/**
+ * !footer at bottom
+ * */
+function footerBottom(){
+	var $footer = $('.footer');
+	if($footer.length){
+		var $tplSpacer = $('<div />', {
+			class: 'spacer'
+		});
+
+		$('.main').after($tplSpacer.clone());
+
+		$(window).on('load resizeByWidth', function () {
+			var footerOuterHeight = $footer.find('.footer__holder').outerHeight();
+			$footer.css({
+				// 'margin-top': -footerOuterHeight
+			});
+
+			$('.spacer').css({
+				'height': footerOuterHeight
+			});
+		})
+	}
+}
+/*footer at bottom end*/
+
 /** ready/load/resize document **/
 
 $(document).ready(function(){
 	placeholderInit();
 	printShow();
+	footerBottom();
 });
