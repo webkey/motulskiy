@@ -147,9 +147,17 @@ function objectFitFixed() {
 	}
 
 	if ( !Modernizr.objectfit ) {
-		var $subjectPreviewImg = $('.gallery__visual img');
-		if ($subjectPreviewImg.length) {
-			$subjectPreviewImg.each(function () {
+		var $galleryImg = $('.gallery__visual img');
+		if ($galleryImg.length) {
+			$galleryImg.each(function () {
+				var $thisImg = $(this);
+				objectfitContainFixed($thisImg, 'contain');
+			});
+		}
+
+		var $entryImg = $('.entry__img img');
+		if ($entryImg.length) {
+			$entryImg.each(function () {
 				var $thisImg = $(this);
 				objectfitContainFixed($thisImg, 'contain');
 			});
@@ -193,4 +201,8 @@ $(document).ready(function(){
 	objectFitFixed();
 
 	footerBottom();
+});
+
+$(window).on('load', function(){
+	$('html').addClass('loaded');
 });

@@ -4,13 +4,7 @@
 })
 <div class="wrapper">
 	<div class="layout">
-		<div class="frame">
-			<div class="frame__holder">
-				<div class="frame__photo">
-					<img src="img/photo-main.png" alt="image description" />
-				</div>
-			</div>
-		</div>
+		@@include('_entry.tpl')
 		<div class="page">
 			<div class="cross">
 				<!--HEADER-->
@@ -68,8 +62,8 @@
 											<div class="swiper-wrapper">
 												@@for (var i = 1; i < 10; i++) {
 												<div class="swiper-slide">
-													<a href="#" class="swiper-slide__inner">
-														<img src="img/img-g-0`+i+`.jpg" alt="image description"/> </a>
+													<div class="swiper-slide__inner">
+														<img src="img/img-g-0`+i+`.jpg" alt="image description"/> </div>
 												</div>
 												}
 											</div>
