@@ -69,6 +69,7 @@ gulp.task( 'createCustomModernizr', function (done) { // Таск для фор�
 gulp.task('mergeCssLibs', function () { // Таск для мержа css библиотек
 	return gulp.src([
 		'src/css/temp/*.css' // see gulpfile-special.js
+		, 'src/libs/swiper/dist/css/swiper.min.css'
 		// ,'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
@@ -84,7 +85,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 	return gulp.src([
 		'src/libs/device.js/lib/device.min.js',
 		'src/libs/jquery-smartresize/jquery.debouncedresize.js',
-		'src/libs/jquery-placeholder/jquery.placeholder.min.js'
+		'src/libs/jquery-placeholder/jquery.placeholder.min.js',
+		'src/libs/swiper/dist/js/swiper.min.js'
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

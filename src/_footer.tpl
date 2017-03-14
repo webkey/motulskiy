@@ -6,16 +6,16 @@
 			<div class="footer-bottom">
 				<div class="footer-bottom__holder">
 					<div class="footer-bottom__col">
-						<div class="footer-contacts">Тел: +375 (17) 266-37-00 <span class="mark">/</span>  Факс: +375 (17) 266-37-06</div>
-					</div>
-					<div class="footer-bottom__col">
-						<a href="#">Правила использования материалов</a>
+						<ul class="footer-bottom__contacts">
+							<li>Тел: +375 (17) 266-37-00</li>
+							<li>Факс: +375 (17) 266-37-06</li>
+						</ul>
 					</div>
 					<div class="footer-bottom__col">
 						<!--developer-->
 						<div class="developer">
 							<a href="http://astronim.by/">
-								<span class="developer__label">Сделано командой &mdash;</span>
+								<span class="developer__label">Разработка сайта &mdash;</span>
 								<span class="developer__logo">Astronim*Support</span>
 							</a>
 						</div>

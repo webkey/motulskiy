@@ -79,6 +79,86 @@ function showFormSearch() {
 /*show form search end*/
 
 /**
+ * sliders initial
+ * */
+function slidersInit() {
+	/*years slider*/
+	$('.years-slider-js').each(function () {
+		var $thisSlider = $(this);
+		var $wrap = $thisSlider.parent();
+		var $thisBtnNext = $('.swiper-button-next', $wrap);
+		var $thisBtnPrev = $('.swiper-button-prev', $wrap);
+
+		new Swiper ($thisSlider, {
+			loop: false,
+			slidesPerView: 'auto',
+			watchSlidesVisibility: true,
+
+			nextButton: $thisBtnNext,
+			prevButton: $thisBtnPrev
+		});
+	});
+
+
+	/*gallery*/
+	$('.gallery').each(function () {
+		var $thisGallery = $(this);
+		var $images = $('.gallery-js', $thisGallery);
+		var $titles = $('.gallery-captions-js', $thisGallery);
+		var $thisBtnNext = $('.swiper-button-next', $thisGallery);
+		var $thisBtnPrev = $('.swiper-button-prev', $thisGallery);
+		var $thisPagination = $('.swiper-pagination', $thisGallery);
+
+		var galleryTop = new Swiper ($images, {
+			loop: true,
+			// grabCursor: true,
+			keyboardControl: true,
+
+			nextButton: $thisBtnNext,
+			prevButton: $thisBtnPrev,
+			pagination: $thisPagination,
+			paginationType: 'fraction'
+		});
+
+		var galleryThumbs = new Swiper ($titles, {
+			// Optional parameters
+			loop: true,
+			effect: 'fade'
+
+			// Navigation arrows
+			// nextButton: $thisBtnNext,
+			// prevButton: $thisBtnPrev
+		});
+
+		galleryTop.params.control = galleryThumbs;
+		galleryThumbs.params.control = galleryTop;
+	});
+}
+
+/*css object fit fixed for ie 9*/
+function objectFitFixed() {
+	function objectfitContainFixed($img, type) {
+		var imgUrl = $img.prop('src');
+		if (imgUrl) {
+			$img.parent()
+				.css('backgroundImage', 'url(' + imgUrl + ')')
+				.addClass('object-fit-bg object-fit-bg--' + type);
+		}
+	}
+
+	if ( !Modernizr.objectfit ) {
+		var $subjectPreviewImg = $('.gallery__visual img');
+		if ($subjectPreviewImg.length) {
+			$subjectPreviewImg.each(function () {
+				var $thisImg = $(this);
+				objectfitContainFixed($thisImg, 'contain');
+			});
+		}
+	}
+}
+/*css object fit fixed for ie 9 end*/
+
+/**
  * !footer at bottom
  * */
 function footerBottom(){
@@ -109,5 +189,8 @@ function footerBottom(){
 $(document).ready(function(){
 	placeholderInit();
 	printShow();
+	slidersInit();
+	objectFitFixed();
+
 	footerBottom();
 });

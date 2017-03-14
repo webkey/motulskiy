@@ -1,0 +1,75 @@
+@import "vars"
+@import "mixins"
+
+.swiper-button-next, .swiper-button-prev
+	position: absolute
+	top: 50%
+	width: 27px
+	height: 44px
+	margin-top: -22px
+	background: none
+
+	&.swiper-button-disabled
+		opacity: .35
+		cursor: auto
+		pointer-events: none
+
+	span
+		+hide-text
+
+	i
+		position: absolute
+		left: 50%
+		top: 50%
+		width: 10px
+		height: 16px
+		//background-color: chocolate
+		z-index: 2
+		pointer-events: none
+		transform: translate(-50%, -50%)
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			height: 12px
+			width: 2px
+			border-radius: 2px
+			backface-visibility: hidden
+			background-color: $text-color
+			transform-origin: center center
+			transition-property: background-color
+			transition-duration: 0.2s
+
+	.no-touchevents &:hover i
+		&:before, &:after
+			background-color: $text-color-alt
+
+.swiper-button-prev
+	i
+		&:before, &:after
+			left: 0
+
+		&:before
+			bottom: 50%
+			transform-origin: left bottom
+			transform: rotate(45deg)
+
+		&:after
+			top: 50%
+			transform-origin: left top
+			transform: rotate(-45deg)
+
+.swiper-button-next
+	i
+		&:before, &:after
+			right: 0
+
+		&:before
+			bottom: 50%
+			transform-origin: right bottom
+			transform: rotate(-45deg)
+
+		&:after
+			top: 50%
+			transform-origin: right top
+			transform: rotate(45deg)

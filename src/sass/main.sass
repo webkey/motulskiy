@@ -46,7 +46,7 @@
 		margin-left: 640px
 
 .main
-	padding: 0
+	padding: 45px 0 0
 	position: relative
 	clear: both
 	z-index: 4
@@ -95,6 +95,25 @@
 
 /*MAIN BLOCKS end*/
 
+/*WIDGETS*/
+@import "sliders"
+
+.object-fit-bg
+	background: no-repeat center center
+
+	&--contain
+		background-size: contain
+
+	&--cover
+		background-size: cover
+
+	img
+		opacity: 0
+		visibility: hidden
+		display: none
+
+/*WIDGETS end*/
+
 /*FRAME*/
 .frame
 
@@ -125,7 +144,7 @@
 
 /*HEADER*/
 .header
-	border-bottom: 1px solid $color-border
+	border-bottom: 1px solid $border-color
 
 	&__holder
 		position: relative
@@ -154,10 +173,12 @@
 			+font-bold
 			letter-spacing: 0.1em
 			text-transform: uppercase
-			color: #000
+			color: $text-color
+			transition-property: color
+			transition-duration: $animation-speed
 
 		.no-touchevents & a:hover, .no-touchevents & li.current a, li.current a
-			color: $color-link
+			color: $text-color-alt
 
 /*main navigation end*/
 
@@ -183,32 +204,38 @@
 		pointer-events: none
 		transform: translate(-50%, -50%)
 
-	i:before, i:after
-		content: ''
-		position: absolute
-		background-color: black
-		border: 2px solid black
-		transition-property: background-color, border-color, transform
-		transition-duration: $animation-speed
+		&:before, &:after
+			content: ''
+			position: absolute
+			background-color: black
+			border: 2px solid black
+			transition-property: background-color, border-color, transform
+			transition-duration: $animation-speed
 
-	i:before
-		left: 0
-		top: 0
-		width: 10px
-		height: 10px
-		border-radius: 5px
-		background: none
+		&:before
+			left: 0
+			top: 0
+			width: 10px
+			height: 10px
+			border-radius: 5px
+			background: none
 
-	i:after
-		bottom: 0
-		right: 0
-		height: 2px
-		width: 6px
-		border-radius: 2px
-		border: none
-		transform-origin: right bottom
-		transform: rotate(38deg)
+		&:after
+			bottom: 0
+			right: 0
+			height: 2px
+			width: 6px
+			border-radius: 2px
+			border: none
+			transform-origin: right bottom
+			transform: rotate(38deg)
 
+	.no-touchevents &:hover i
+		&:before
+			border-color: $text-color-alt
+
+		&:after
+			background-color: $text-color-alt
 
 /*search end*/
 
@@ -217,47 +244,235 @@
 /*MAIN*/
 /*breadcrumbs*/
 .breadcrumbs
-	font-size: 12px
-	line-height: 14px
-	color: #000
+	font-size: 1.6rem
+	line-height: 1.4
+	color: #999
 	margin: 0 0 20px
 
+	$bc-color-link: black
+
 	&__list, .#{$user-content} &__list
-		overflow: hidden
-		list-style: none
 		padding: 0
 		margin: 0
 	
 		li
-			padding: 0 10px 10px 12px
+			padding: 0 20px 0 0
 			margin: 0
-			float: left
+
+			&:before, &:first-child:before
+				content: none
+
+	&__list
+		cursor: default
+		overflow: hidden
+
+		li
+			display: inline-block
+			vertical-align: top
 			position: relative
 
-			&:before
+			&:after
 				content: '/'
 				position: absolute
-				left: 0
+				right: 10px
 				top: 0
 				height: 0
 				width: 0
 				border: none
+				color: $text-color-alt
 
-			&:first-child
-				padding-left: 0
-				background: none
-
-			&:first-child:before
+			&:last-child:after
 				content: none
 
+			span
+				display: inline-block
+				vertical-align: top
+				line-height: 1.2
+				overflow: hidden
+				white-space: nowrap
+				text-overflow: ellipsis
+				max-width: 300px
+
 		a
-			color: $color-link
-			text-decoration: underline
+			display: inline-block
+			vertical-align: top
+			color: $bc-color-link
+			text-decoration: none
+			cursor: pointer
 
 			.no-touchevents &:hover
 				text-decoration: none
+				
+			span
+				border-bottom: 1px solid lighten($bc-color-link, 70%)
+				transition-property: border-color, color
+				transition-duration: $animation-speed
+
+			.no-touchevents &:hover span
+				border-color: transparent
+				color: $text-color-alt
 
 /*breadcrumbs end*/
+
+/*years list*/
+.years
+	margin-bottom: $bottom-space
+	border: 1px solid $border-color
+	padding: 19px 55px
+	position: relative
+
+	&__list, .#{$user-content} &__list
+		margin: 0
+
+		li
+			padding: 0
+			margin: 0
+
+			&:before
+				content: none
+
+	&__list
+		li
+			display: inline-block
+			vertical-align: top
+
+			&.swiper-slide
+				width: auto
+
+		a
+			display: inline-block
+			vertical-align: top
+			padding: 5px 15px
+			text-decoration: none
+			color: $text-color
+			font-size: 1.4rem
+			line-height: 1.4
+			+font-bold
+			text-transform: uppercase
+			letter-spacing: 0.1em
+			transition-property: color
+			transition-duration: $animation-speed
+
+		.no-touchevents & a:hover, .no-touchevents & li.current a, li.current a
+			color: $text-color-alt
+
+	.swiper-container
+		position: relative
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			top: 0
+			height: 100%
+			width: 15px
+			z-index: 2
+			pointer-events: none
+
+		&:before
+			left: 0
+			+linear-gradient(to right, white 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.1) 100%)
+
+		&:after
+			right: 0
+			+linear-gradient(to left, white 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.1) 100%)
+
+	.swiper-button
+		&-prev
+			left: 20px
+
+		&-next
+			right: 20px
+
+/*years list end*/
+
+/*gallery*/
+.gallery
+	margin-bottom: $bottom-space
+
+	&__toolbar
+		min-height: 44px
+		position: relative
+		margin-bottom: 1rem
+
+		.swiper-pagination
+			&-fraction
+				position: relative
+				bottom: auto
+				left: auto
+				width: auto
+				text-align: left
+				font-size: 1.4rem
+				line-height: 1.5
+				font-weight: bold
+				color: $text-color
+				text-transform: uppercase
+				letter-spacing: 0.1em
+				padding: 13px 0
+
+			&-current
+				color: $text-color-alt
+
+		.swiper-button
+
+			&-prev
+				left: auto
+				right: 35px
+
+			&-next
+				right: -8px
+
+	&__visual
+		margin-bottom: 1.5rem
+
+		.swiper-slide
+
+			&__inner
+				display: block
+				text-decoration: none
+				color: $text-color
+				position: relative
+				background-color: lightgray
+
+				&:before
+					content: ''
+					display: block
+					height: 0
+					//padding-top: 62.5%
+					padding-top: 66.6%
+
+			img
+				//width: auto
+				height: auto
+				max-width: 100%
+				max-height: 100%
+				transform: translate(-50%,-50%)
+				position: absolute
+				left: 50%
+				top: 50%
+				object-fit: contain
+				width: 100%
+
+
+	&__caption
+		padding-left: 32px
+		position: relative
+		background-color: #fff
+		font-size: 1.6rem
+		line-height: 1.5
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 6px
+			bottom: 5px
+			border-right: 2px solid $text-color-alt
+
+		> *
+			margin-bottom: 0
+			padding-bottom: 0
+
+/*gallery end*/
 /*MAIN end*/
 
 /*SIDEBAR*/
@@ -273,8 +488,7 @@
 	.layout-inside
 		position: relative
 
-	@at-root
-	.footer__holder
+	&__holder
 		position: absolute
 		overflow: hidden
 		cursor: default
@@ -284,6 +498,145 @@
 		top: auto
 		right: auto
 
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			height: 2px
+			width: 100%
+			pointer-events: none
+			+linear-gradient(to right, #019875, #9800f9)
+
+/*footer bottom*/
+.footer-bottom
+	$f-text-color: $text-color
+	$f-font-size: 1.6rem
+	$f-line-height: 1.4
+
+	color: $f-text-color
+	font-size: $f-font-size
+	line-height: $f-line-height
+
+	//@media only screen and (max-width: $mq-desk-md)
+
+
+	&__holder
+		position: relative
+		text-align: justify
+		overflow: hidden
+		cursor: default
+		padding: 48px 0
+
+		font-size: 1px
+		line-height: 0
+		letter-spacing: -4px
+
+		&:after
+			content: "1"
+			margin-left: 100%
+			height: 1px
+			overflow: hidden
+			display: inline-block
+
+	&__col
+		display: inline-block
+		vertical-align: middle
+		font-size: $f-font-size
+		line-height: $f-line-height
+		padding: 0
+		letter-spacing: normal
+
+	a
+		color: $f-text-color
+		text-decoration: none
+
+		.no-touchevents &:hover
+			text-decoration: underline
+
+	&__contacts
+		font-size: 0
+		letter-spacing: -4px
+
+		li
+			display: inline-block
+			vertical-align: top
+			position: relative
+			font-size: $f-font-size
+			letter-spacing: normal
+			padding-right: 20px
+
+			&:after
+				content: '/'
+				position: absolute
+				right: 13px
+				top: 0
+				height: 0
+				width: 0
+				border: none
+				color: $text-color-alt
+
+			&:last-child:after
+				content: none
+
+/*footer bottom end*/
+
+/*developer*/
+.developer
+	display: inline-block
+	padding-right: 4px
+
+	a
+		text-decoration: none
+
+		.no-touchevents &:hover
+			text-decoration: none
+
+	&__logo
+		display: inline-block
+		vertical-align: top
+		position: relative
+		top: 3px
+		width: 154px
+		height: 20px
+		text-align: left
+		text-indent: -9999px
+		padding-right: 3px
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			width: 149px
+			height: 16px
+			transition-property: opacity, transform, filter
+			-webkit-transition-duration: 0.2s
+			transition-duration: 0.2s
+
+		&:before
+			content: ''
+			position: absolute
+			left: 4px
+			top: 4px
+			background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTA2ODc1N0UwOEJDMTFFNzlCNzhBOUI2REQxMjc4QzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTA2ODc1N0YwOEJDMTFFNzlCNzhBOUI2REQxMjc4QzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDY4NzU3QzA4QkMxMUU3OUI3OEE5QjZERDEyNzhDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDY4NzU3RDA4QkMxMUU3OUI3OEE5QjZERDEyNzhDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnDruBQAAAAkSURBVHjaYmRgYPjPACL+/2cE0YwYAkAGA5jByPgfqwBAgAEAP4gP/bFMMZQAAAAASUVORK5CYII=')
+			background-size: 2px
+
+		&:after
+			content: ''
+			position: absolute
+			background: #00ef85 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=') no-repeat center center
+			background-size: auto 16px
+
+	.no-touchevents a:hover &__logo:before
+		transform: translate(0, 1px)
+		filter: blur(2px)
+		opacity: 0.6
+
+	.no-touchevents a:hover &__logo:after
+		transform: translate(0, -1px)
+
+/*developer end*/
 /*FOOTER end*/
 
 /*======================================================*/
