@@ -74,8 +74,7 @@ a
 	.no-touchevents &:hover
 		text-decoration: none
 
-	&[href^="tel"],
-	.no-touchevents &[href^="tel"]:hover
+	&[href^="tel"], .no-touchevents &[href^="tel"]:hover
 		text-decoration: none !important
 		color: inherit
 		cursor: default
@@ -127,12 +126,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	white-space: nowrap
 
 /*btn*/
-[class|="btn"],
-[class*=" btn-"],
-input[type="submit"],
-input[type="button"],
-input[type="reset"],
-button
+[class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button
 	display: inline-block
 	vertical-align: top
 	position: relative
@@ -141,11 +135,8 @@ button
 	box-sizing: border-box
 	cursor: pointer
 
-[class|="btn"],
-[class*=" btn-"]
-	& input[type="submit"],
-	& input[type="button"],
-	& input[type="reset"]
+[class|="btn"], [class*=" btn-"]
+	& input[type="submit"], & input[type="button"], & input[type="reset"]
 		background: url("../img/empty.png") repeat
 		display: block
 		height: 100%
@@ -193,22 +184,18 @@ button
 
 .#{$user-content}
 	@each $tags in h2, h3, h4, h5
-		p + #{$tags},
-		ul + #{$tags},
-		ol + #{$tags}
+		p + #{$tags}, ul + #{$tags}, ol + #{$tags}
 			padding-top: 10px
 
 /*list*/
 .#{$user-content}
-	//list
 	ul, ol
 		margin: $space-bottom 0
 		//padding: 0 0 $space-bottom
 		padding: 0
 		list-style: none
 
-	ul li,
-	ol li
+	ul li, ol li
 		//padding: $space-bottom/2 0 0 30px
 		padding-left: 30px
 		margin: #{$space-bottom/2} 0
@@ -293,12 +280,10 @@ button
 		list-style: none
 		margin: 0
 
-		li,
-		li:first-child
+		li, li:first-child
 			padding: 0
 
-			&:before,
-			&:first-child:before
+			&:before, &:first-child:before
 				content: none
 /*list end*/
 
@@ -338,20 +323,17 @@ table
 	.tbl
 		border: none
 
-		td,
-		th
+		td, th
 			color: $color-table-text
 			background-color: $color-table-bg
 			border: 0 solid $color-table-border
 			font-size: 1.4rem
 			line-height: 1.2
 
-			&:first-child,
-			&:first-child
+			&:first-child, &:first-child
 				border-left-width: 1px
 
-			&:last-child,
-			&:last-child
+			&:last-child, &:last-child
 				border-right-width: 1px
 
 		td
@@ -364,15 +346,12 @@ table
 			background: $color-table-bg-alt
 			color: $color-table-text-alt
 
-		th,
-		thead td
+		th, thead td
 			+font-bold
 			font-size: 1.6rem
 			text-align: left
 
-		th,
-		thead td,
-		tfoot td
+		th, thead td, tfoot td
 			background: $color-table-bg-alt
 			color: $color-table-text-alt
 			border-color: $color-table-bg-alt
@@ -383,14 +362,14 @@ table
 .#{$user-content}
 	.blockquote
 		padding: 0 0 30px
-	
+
 	blockquote
 		display: block
 		margin: 0
 		background-color: #f5f5f5
 		border-left: 4px solid $color-text-alt
 		padding: 18px 32px 28px 42px
-	
+
 		q
 			display: block
 			margin: 0
@@ -399,8 +378,7 @@ table
 			line-height: $line-height
 			color: $color-text
 
-			&:before,
-			&:after
+			&:before, &:after
 				content: ''
 				display: block
 				font-size: 2.4rem
@@ -416,7 +394,7 @@ table
 				text-align: right
 				padding-right: 18.5%
 				padding-top: 8px
-		
+
 		cite
 			text-align: right
 			display: block
@@ -565,8 +543,7 @@ textarea
 /*form common end*/
 
 /*form placeholder*/
-input,
-textarea
+input, textarea
 	&::-webkit-input-placeholder
 		color: $color-form-placeholder
 		transition: $animation-speed
@@ -634,10 +611,7 @@ textarea
 /*form placeholder end*/
 
 /*form checkbox and radiobutton*/
-input[type="checkbox"] + label,
-input[type="radio"] + label,
-.check-label,
-.radio-label
+input[type="checkbox"] + label, input[type="radio"] + label, .check-label, .radio-label
 	display: inline-block
 	vertical-align: top
 	color: #000
@@ -645,8 +619,7 @@ input[type="radio"] + label,
 	cursor: pointer
 	position: relative
 
-input[type="checkbox"] + label:before,
-.check-label > span > i:before
+input[type="checkbox"] + label:before, .check-label > span > i:before
 	content: ''
 	height: 18px
 	width: 18px
@@ -658,10 +631,7 @@ input[type="checkbox"] + label:before,
 	border: 1px solid $color-text-alt
 	box-sizing: border-box
 
-input[type="checkbox"] + label > span,
-input[type="radio"] + label > span,
-input[type="checkbox"] + span,
-input[type="radio"] + span
+input[type="checkbox"] + label > span, input[type="radio"] + label > span, input[type="checkbox"] + span, input[type="radio"] + span
 	display: inline-block
 	vertical-align: top
 	position: relative
@@ -676,8 +646,7 @@ input[type="checkbox"]
 	margin: 0
 	display: none
 
-	& + label:after,
-	& + span > i:after
+	& + label:after, & + span > i:after
 		content: ''
 		height: 16px
 		width: 16px
@@ -692,10 +661,7 @@ input[type="checkbox"]
 		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
 
-	& + label > span:before,
-	& + label > span:after,
-	& + span:before,
-	& + span:after
+	& + label > span:before, & + label > span:after, & + span:before, & + span:after
 		content: ''
 		position: absolute
 		height: 3px
@@ -711,22 +677,19 @@ input[type="checkbox"]
 		-webkit-transition-timing-function: linear
 		transition-timing-function: linear
 
-	& + label > span:before,
-	& + span:before
+	& + label > span:before, & + span:before
 		transform: rotate(45deg)
 		transform-origin: 0 7px
 		z-index: 1
 
-	& + label > span:after,
-	& + span:after
+	& + label > span:after, & + span:after
 		transform: rotate(-50deg)
 		transform-origin: 0 10px
 		left: 22px
 
 	// checkbox checked
 	&:checked
-		& + label > span:before,
-		& + span:before
+		& + label > span:before, & + span:before
 			width: 7px
 			margin: -4px 0 0 0
 			-webkit-transition-property: width
@@ -736,8 +699,7 @@ input[type="checkbox"]
 			-webkit-backface-visibility: hidden
 			backface-visibility: hidden
 
-		& + label > span:after,
-		& + span:after
+		& + label > span:after, & + span:after
 			width: 11px
 			margin: 0 0 0 -8px
 			-webkit-transition-property: width
@@ -751,18 +713,13 @@ input[type="checkbox"]
 
 	// checkbox disabled
 	&:disabled
-		& + label,
-		& + span > i
+		& + label, & + span > i
 			color: #bdbdbd
 
-		& + label:before,
-		& + span > i:before
+		& + label:before, & + span > i:before
 			border-color: #d6d6d6
 
-		& + label > span:before,
-		& + label > span:after,
-		& + span:before,
-		& + span:after
+		& + label > span:before, & + label > span:after, & + span:before, & + span:after
 			background: #b9b9b9
 
 // radio
@@ -774,8 +731,7 @@ input[type="radio"]
 	padding: 0
 	display: none
 
-	& + label:before,
-	& + span:before
+	& + label:before, & + span:before
 		content: ''
 		height: 18px
 		width: 18px
@@ -787,8 +743,7 @@ input[type="radio"]
 		border: 1px solid $color-text-alt
 		box-sizing: border-box
 
-	& + label:after,
-	& + span:after
+	& + label:after, & + span:after
 		content: ''
 		height: 16px
 		width: 16px
@@ -803,8 +758,7 @@ input[type="radio"]
 		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
 
-	& + label > span:after,
-	& + span > i:after
+	& + label > span:after, & + span > i:after
 		content: ''
 		width: 10px
 		height: 10px
@@ -824,8 +778,7 @@ input[type="radio"]
 		opacity: 0
 
 	// radio checked
-	&:checked + label > span:after,
-	&:checked + span > i:after
+	&:checked + label > span:after, &:checked + span > i:after
 		-webkit-animation: bounce 0.3s
 		-webkit-animation-iteration-count: 1
 		animation: bounce 0.3s
@@ -886,16 +839,13 @@ input[type="radio"]
 
 	// radio disabled
 	&:disabled
-		& + label,
-		& + span
+		& + label, & + span
 			color: #bdbdbd
 
-		& + label:before,
-		& + span:before
+		& + label:before, & + span:before
 			border-color: #d6d6d6
 
-		& + label > span:after,
-		& + span > i:after
+		& + label > span:after, & + span > i:after
 			background: #b9b9b9
 
 /*form checkbox and radiobutton end*/
@@ -913,8 +863,7 @@ input[type="radio"]
 	.cselect
 		width: 100%
 
-	select,
-	button.cselect .select-inner
+	select, button.cselect .select-inner
 		display: block
 		overflow: hidden
 		text-overflow: ''
@@ -937,9 +886,7 @@ input[type="radio"]
 		box-sizing: border-box
 		outline: none
 
-	select,
-	button.cselect,
-	button.cselect .select-inner
+	select, button.cselect, button.cselect .select-inner
 		+font-normal
 		font-size: 16px
 		line-height: 22px
@@ -953,16 +900,11 @@ input[type="radio"]
 	button.cselect
 		z-index: 2
 
-	select:focus,
-	button.cselect:focus .select-inner,
-	button.cselect.ui-state-active .select-inner
+	select:focus, button.cselect:focus .select-inner, button.cselect.ui-state-active .select-inner
 		color: $color-form-text
 		border-color: $color-form-border-focus
 
-	&:before,
-	&:after,
-	button.cselect .ui-icon .arrow-select:before,
-	button.cselect .ui-icon .arrow-select:after
+	&:before, &:after, button.cselect .ui-icon .arrow-select:before, button.cselect .ui-icon .arrow-select:after
 		content: ''
 		position: absolute
 		right: 22px
@@ -975,14 +917,12 @@ input[type="radio"]
 		box-sizing: border-box
 		z-index: 1
 
-	&:before,
-	button.cselect .ui-icon .arrow-select:before
+	&:before, button.cselect .ui-icon .arrow-select:before
 		-webkit-transform: rotate(45deg)
 		-ms-transform: rotate(45deg)
 		transform: rotate(45deg)
 
-	&:after,
-	button.cselect .ui-icon .arrow-select:after
+	&:after, button.cselect .ui-icon .arrow-select:after
 		-webkit-transform: rotate(-45deg)
 		-ms-transform: rotate(-45deg)
 		transform: rotate(-45deg)
@@ -1026,7 +966,7 @@ div.cselect
 	&.ui-multiselect-menu
 		padding: 2px 0
 		margin: 0
-	
+
 	.ui-multiselect-checkboxes
 		padding: 0
 		margin: 0
@@ -1037,21 +977,21 @@ div.cselect
 		border-radius: 4px
 		background-color: $color-form-bg
 		border: 1px solid $color-form-border-focus
-	
+
 	.ui-multiselect-checkboxes li
 		padding: 0
 		overflow: hidden
-	
+
 	.ui-multiselect-checkboxes li:first-child
 		border-radius: 4px 4px 0 0
-	
+
 	.ui-multiselect-checkboxes li:last-child
 		border-radius: 0 0 4px 4px
-	
+
 	.ui-multiselect-checkboxes label input
 		position: absolute
 		left: -9999px
-	
+
 	.ui-multiselect-checkboxes label
 		display: block
 		cursor: pointer
@@ -1067,20 +1007,19 @@ div.cselect
 		transition-property: background, color
 		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
-	
+
 	.desktop .ui-multiselect-checkboxes label:hover
 		background-color: #eaeaea
 		color: $color-form-text
-	
+
 	.ui-multiselect-checkboxes label.ui-state-active
 		background-color: #f3f3f3
 		color: $color-form-text
-	
+
 	.ui-multiselect-checkboxes input[type="radio"] + span
 		padding-left: 0
-	
-	.ui-multiselect-checkboxes input[type="radio"] + span:before,
-	.ui-multiselect-checkboxes input[type="radio"] + span:after
+
+	.ui-multiselect-checkboxes input[type="radio"] + span:before, .ui-multiselect-checkboxes input[type="radio"] + span:after
 		content: none
 
 /*multiselect menu end*/
@@ -1089,8 +1028,7 @@ div.cselect
 
 /*download files items*/
 /*depict files*/
-[class|="depict-files"],
-[class*=" depict-files-"]
+[class|="depict-files"], [class*=" depict-files-"]
 	background: url(../img/sprite-files.png) 0 0 no-repeat
 	display: inline-block
 	vertical-align: top

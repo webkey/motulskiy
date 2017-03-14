@@ -2,8 +2,7 @@
 	<div class="layout-inside">
 		<div class="header__holder">
 			<!--main navigation-->
-			<div class="main-nav">
-				<nav class="nav">
+			<nav class="nav">
 					<ul class="nav__list">
 						@@loop('_nav-items.tpl', [
 							{
@@ -38,8 +37,10 @@
 						])
 					</ul>
 				</nav>
-			</div>
 			<!--main navigation end-->
+			<!--search-->
+			<a href="#" class="btn-search btn-search-js"><i></i><span>Поиск</span></a>
+			<!--search end-->
 		</div>
 	</div>
 </header>

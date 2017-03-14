@@ -48,11 +48,11 @@ gulp.task('sassCompilation', function () { // Создаем таск для к�
 			indentType: 'tab',
 			indentWidth: 1
 		}).on('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
-		// .pipe(autoprefixer([
-		// 	'last 5 versions', '> 1%', 'ie 8', 'ie 7'
-		// ], {
-		// 	cascade: true
-		// })) // Создаем префиксы
+		.pipe(autoprefixer([
+			'last 5 versions', '> 1%' //, 'ie 8', 'ie 7'
+		], {
+			cascade: false
+		})) // Создаем префиксы
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('./src/css')) // Выгружаем результата в папку src/css
 		.pipe(browserSync.reload({

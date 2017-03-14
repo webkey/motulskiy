@@ -45,6 +45,40 @@ function printShow() {
 /*print end*/
 
 /**
+ * !show form search
+ * */
+function showFormSearch() {
+	var $searchForm = $('.js-search-form');
+	if (!$searchForm.length) {
+		return;
+	}
+
+	var $body = $('body');
+	var openedFormClass = 'form-opened';
+
+	$searchForm.on('click', '.js-search-open', function () {
+		$body.toggleClass(openedFormClass, !$body.hasClass(openedFormClass));
+
+		focusingSearchForm();
+	});
+
+	$searchForm.on('click', 'input:submit', function () {
+		if(!$body.hasClass(openedFormClass)){
+			$body.addClass(openedFormClass);
+
+			focusingSearchForm();
+
+			return false;
+		}
+	});
+
+	function focusingSearchForm(){
+		$searchForm.find('input[type="search"], input[type="text"]').trigger('focus');
+	}
+}
+/*show form search end*/
+
+/**
  * !footer at bottom
  * */
 function footerBottom(){
