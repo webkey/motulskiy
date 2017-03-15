@@ -1,0 +1,55 @@
+@@include('_head.tpl', {
+	"title": "Биография",
+	"pageClass": ""
+})
+<div class="wrapper">
+	<div class="layout">
+		@@include('_entry.tpl')
+		<div class="page">
+			<div class="cross">
+				<!--HEADER-->
+				@@include('_header.tpl', {
+					"mainNavItemActive": "biography"
+				})
+				<!--HEADER end-->
+				<!--MAIN-->
+				<div class="main">
+					<div class="main__holder">
+						<!--CONTENT-->
+						<div class="content-wrap">
+							<div class="content">
+								<!--breadcrumbs-->
+								@@include('_breadcrumbs.tpl')
+								<!--breadcrumbs end-->
+
+								<h1>Предыдущие должности</h1>
+								<!--dates-->
+								<div class="dates">
+									<ul class="dates__list list-reset">
+										@@for (var i = 9; i > 0; i--) {
+											<li>
+												<div class="dates__title">01.03.199`+i+` – 24.03.200`+i+`</div>
+												<div class="dates__text">Декан факультета библиотечно-информационных систем Белорусского государственного университета культуры.</div>
+											</li>
+										}
+									</ul>
+								</div>
+								<!--dates end-->
+							</div>
+						</div>
+						<!--CONTENT end-->
+
+						<!--SIDEBAR-->
+						@@include('_sidebar.tpl', {
+							"menuItemActive": "1"
+						})
+						<!--SIDEBAR-->
+					</div>
+				</div>
+				<!--MAIN end-->
+			</div>
+			@@include('_footer.tpl')
+		</div>
+	</div>
+</div>
+@@include('_foot.tpl')

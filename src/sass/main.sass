@@ -30,6 +30,16 @@
 	overflow: hidden
 	position: relative
 
+	&:before
+		content: ''
+		position: absolute
+		left: $layout-width
+		top: 0
+		bottom: 0
+		width: 40px
+		margin-left: -40px
+		box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15)
+
 .cross
 	position: relative
 	min-height: 100vh
@@ -78,10 +88,9 @@
 	width: 100%
 
 .content
-	margin: 0 0 0 $sidebar-left-width
+	margin: 0 0 $bottom-space*2 $sidebar-left-width
 	padding-left: $layout-grid-space
 	padding-right: $layout-grid-space
-	padding-bottom: $bottom-space*2
 	min-height: 50px
 
 	.home-page &
@@ -553,7 +562,7 @@
 .breadcrumbs
 	font-size: 1.6rem
 	color: $text-color-light
-	margin: 0 0 20px
+	margin-bottom: $bottom-space
 
 	$bc-color-link: black
 
@@ -772,6 +781,23 @@
 			padding-bottom: 0
 
 /*quotes end*/
+
+/*dates*/
+.dates
+	margin-bottom: $bottom-space
+
+	.dates__list li
+		margin: $bottom-space 0
+
+	&__title
+		+font-bold
+		font-size: 1.6rem
+		margin-bottom: 0.3em
+
+	&__text > *:last-child
+		margin-bottom: 0
+
+/*dates end*/
 /*MAIN end*/
 
 /*SIDEBAR*/

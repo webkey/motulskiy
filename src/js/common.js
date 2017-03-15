@@ -61,8 +61,6 @@ function toggleHeader(){
 
 		var minScrollTop = $('.header').parent().offset().top + 50;
 
-		console.log("minScrollTop: ", minScrollTop);
-
 		$page.toggleClass('header-transform', (currentScrollTop >= minScrollTop));
 
 		var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minScrollTop;
@@ -114,6 +112,8 @@ function showFormSearch(){
 	var classFormIsOpen = 'form-is-open';
 
 	$html.on('click', '.btn-search-open-js', function(e){
+		console.log(3);
+		e.stopPropagation();
 
 		// !important
 		// var $searchForm = $searchFormContainer.find('form');
@@ -138,11 +138,18 @@ function showFormSearch(){
 	});
 
 	$html.on('click', '.btn-search-close-js', function(e){
+		console.log(2);
+		e.stopPropagation();
 		e.preventDefault();
 
 		// $searchField.val(''); // !important
 
 		closeSearchForm($searchFormContainer);
+	});
+
+	$(document).on('click', function () {
+		console.log(1);
+		closeSearchForm();
 	});
 
 	function closeSearchForm(){
