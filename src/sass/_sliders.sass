@@ -4,10 +4,19 @@
 .swiper-button-next, .swiper-button-prev
 	position: absolute
 	top: 50%
-	width: 27px
-	height: 44px
-	margin-top: -22px
+	width: 50px
+	height: 50px
+	margin-top: -25px
 	background: none
+
+	&.swiper-button--alt
+		border: 2px solid #000
+		border-radius: 50%
+		transition-property: border-color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			border-color: $text-color-alt
 
 	&.swiper-button-disabled
 		opacity: .35
@@ -73,3 +82,55 @@
 			top: 50%
 			transform-origin: right top
 			transform: rotate(45deg)
+
+.slider
+	&__toolbar
+		min-height: 44px
+		position: relative
+		margin-bottom: 1rem
+
+		.swiper-pagination
+			&-fraction
+				position: relative
+				bottom: auto
+				left: auto
+				width: auto
+				text-align: left
+				font-size: 1.4rem
+				line-height: 1.5
+				font-weight: bold
+				color: $text-color
+				text-transform: uppercase
+				letter-spacing: 0.1em
+				padding: 13px 0
+
+			&-current
+				color: $text-color-alt
+
+		.swiper-button
+
+			&-prev
+				left: auto
+				right: 30px
+
+			&-next
+				right: -20px
+
+		&--bottom
+			min-height: 44px
+			position: relative
+
+			.swiper-button
+
+				&-prev
+					left: -20px
+
+					&.swiper-button--alt
+						left: 0
+
+				&-next
+					right: auto
+					left: 30px
+
+					&.swiper-button--alt
+						left: 70px

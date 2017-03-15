@@ -156,57 +156,85 @@ function showFormSearch(){
  * */
 function slidersInit() {
 	/*years slider*/
-	$('.years-slider-js').each(function () {
-		var $thisSlider = $(this);
-		var $wrap = $thisSlider.parent();
-		var $thisBtnNext = $('.swiper-button-next', $wrap);
-		var $thisBtnPrev = $('.swiper-button-prev', $wrap);
+	var $slidersYears = $('.years-slider-js');
+	if ($slidersYears.length) {
+		$slidersYears.each(function () {
+			var $thisSlider = $(this);
+			var $wrap = $thisSlider.parent();
+			var $thisBtnNext = $('.swiper-button-next', $wrap);
+			var $thisBtnPrev = $('.swiper-button-prev', $wrap);
 
-		new Swiper ($thisSlider, {
-			loop: false,
-			slidesPerView: 'auto',
-			watchSlidesVisibility: true,
-			keyboardControl: false,
+			new Swiper($thisSlider, {
+				loop: false,
+				slidesPerView: 'auto',
+				watchSlidesVisibility: true,
+				keyboardControl: false,
 
-			nextButton: $thisBtnNext,
-			prevButton: $thisBtnPrev
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev
+			});
 		});
-	});
-
+	}
 
 	/*gallery*/
-	$('.gallery').each(function () {
-		var $thisGallery = $(this);
-		var $images = $('.gallery-js', $thisGallery);
-		var $titles = $('.gallery-captions-js', $thisGallery);
-		var $thisBtnNext = $('.swiper-button-next', $thisGallery);
-		var $thisBtnPrev = $('.swiper-button-prev', $thisGallery);
-		var $thisPagination = $('.swiper-pagination', $thisGallery);
+	var $gallery = $('.gallery');
+	if ($gallery.length) {
+		$gallery.each(function () {
+			var $thisGallery = $(this);
+			var $images = $('.gallery-js', $thisGallery);
+			var $titles = $('.gallery-captions-js', $thisGallery);
+			var $thisBtnNext = $('.swiper-button-next', $thisGallery);
+			var $thisBtnPrev = $('.swiper-button-prev', $thisGallery);
+			var $thisPagination = $('.swiper-pagination', $thisGallery);
 
-		var galleryTop = new Swiper ($images, {
-			loop: true,
-			// grabCursor: true,
-			keyboardControl: false,
+			var galleryTop = new Swiper($images, {
+				loop: true,
+				// grabCursor: true,
+				keyboardControl: false,
 
-			nextButton: $thisBtnNext,
-			prevButton: $thisBtnPrev,
-			pagination: $thisPagination,
-			paginationType: 'fraction'
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
+				pagination: $thisPagination,
+				paginationType: 'fraction'
+			});
+
+			var galleryThumbs = new Swiper($titles, {
+				// Optional parameters
+				loop: true,
+				effect: 'fade'
+
+				// Navigation arrows
+				// nextButton: $thisBtnNext,
+				// prevButton: $thisBtnPrev
+			});
+
+			galleryTop.params.control = galleryThumbs;
+			galleryThumbs.params.control = galleryTop;
 		});
+	}
 
-		var galleryThumbs = new Swiper ($titles, {
-			// Optional parameters
-			loop: true,
-			effect: 'fade'
+	/*quotes slider*/
+	var $slidersQuotes = $('.slider-quoter-js');
+	if ($slidersQuotes.length) {
+		$slidersQuotes.each(function () {
+			var $thisSlider = $(this);
+			var $wrap = $thisSlider.parent();
+			var $thisBtnNext = $('.swiper-button-next', $wrap);
+			var $thisBtnPrev = $('.swiper-button-prev', $wrap);
+			var $thisPagination = $('.swiper-pagination', $wrap);
 
-			// Navigation arrows
-			// nextButton: $thisBtnNext,
-			// prevButton: $thisBtnPrev
+			new Swiper($thisSlider, {
+				loop: true,
+				keyboardControl: false,
+
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
+				pagination: $thisPagination,
+				paginationType: 'fraction'
+			});
 		});
+	}
 
-		galleryTop.params.control = galleryThumbs;
-		galleryThumbs.params.control = galleryTop;
-	});
 }
 
 /**

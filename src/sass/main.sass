@@ -35,6 +35,10 @@
 	min-height: 100vh
 	padding-top: $header-height
 
+	@media only screen and (max-width: $mq-desk-sm)
+		.entry ~ .page &
+			min-height: calc(100vh - 320px)
+
 .main
 	padding: 45px 0 0
 	position: relative
@@ -59,9 +63,12 @@
 	.header-fixed &
 		position: fixed
 		width: calc(100% - 33.6%)
-		max-width: $layout-width-small
+		max-width: $layout-width - $entry-max-width
 		box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15)
 		border-color: transparent
+
+		.home-page &
+			width: calc(100% - 50%)
 
 	.header-transform &
 		height: $header-height-small
@@ -74,7 +81,11 @@
 	margin: 0 0 0 $sidebar-left-width
 	padding-left: $layout-grid-space
 	padding-right: $layout-grid-space
+	padding-bottom: $bottom-space*2
 	min-height: 50px
+
+	.home-page &
+		margin-left: 0
 
 .sidebar
 	float: left
@@ -82,9 +93,16 @@
 	width: $sidebar-left-width
 	padding-left: $layout-grid-space
 
+	.home-page &
+		display: none
+
 .footer__holder
 	left: $sidebar-left-width
 	width: calc(100% - #{$sidebar-left-width})
+
+	.home-page &
+		left: 0
+		width: 100%
 
 .layout
 	//max-width: $layout-width
@@ -101,8 +119,12 @@
 	// sidebars
 	$sidebar-left-width: 250px
 
-	.header-fixed .header
-		width: calc(100% - 24%)
+	.header-fixed
+		.header
+			width: calc(100% - 24%)
+
+		.home-page .header
+			width: calc(100% - 33%)
 
 	.content
 		margin: 0 0 0 $sidebar-left-width
@@ -129,7 +151,7 @@
 		height: $header-height
 		width: 100%
 
-		.header-fixed &
+		.header-fixed &, .header-fixed .home-page &
 			width: 100%
 			max-width: none
 
@@ -164,23 +186,29 @@
 /*ENTRY*/
 .entry-spacer
 	width: 33.6%
-	max-width: 640px
+	max-width: $entry-max-width
 	float: left
 	max-height: 100vh
 	height: 50px
 	transition-property: width
 	transition-duration: $animation-speed
 
+	.home-page &
+		width: 50%
+		max-width: $entry-max-width-home
+
 	@media only screen and (max-width: $mq-desk-md)
 		width: 24%
+
+		.home-page &
+			width: 33%
 
 	@media only screen and (max-width: $mq-desk-sm)
 		display: none
 
 .entry
-	//width: 640px
 	width: 33.6%
-	max-width: 640px
+	max-width: $entry-max-width
 	position: fixed
 	height: 100vh
 	overflow-x: hidden
@@ -188,6 +216,10 @@
 	color: #fff
 	transition-property: width
 	transition-duration: $animation-speed
+
+	.home-page &
+		width: 50%
+		max-width: $entry-max-width-home
 
 	a
 		text-decoration: none
@@ -198,6 +230,9 @@
 		min-height: 100vh
 		z-index: 1
 		+linear-gradient(to right, #019875 0%, #108982 44%, #2e6b9c 100%)
+
+		.home-page &
+			+linear-gradient(to right, #019875, #4c4db6)
 
 		&:before
 			content: ''
@@ -216,6 +251,8 @@
 		max-height: 90%
 		width: 75%
 		overflow: hidden
+		transition-property: width, height
+		transition-duration: $animation-speed
 		z-index: -1
 
 		&:before
@@ -234,10 +271,14 @@
 
 	&__frame
 		position: absolute
-		left: 15.6%
-		right: 15.6%
-		bottom: 6.3%
-		top: 6.3%
+		left: 100px
+		right: 100px
+		top: 60px
+		bottom: 60px
+		//left: 15.6%
+		//right: 15.6%
+		//bottom: 6.3%
+		//top: 6.3%
 		z-index: 1
 
 	&__logo
@@ -250,6 +291,9 @@
 	&__title
 		margin-bottom: 2em
 
+		.home-page &
+			max-width: 50%
+
 	&__message
 		font-size: 1.4rem
 		line-height: 1.5
@@ -257,6 +301,11 @@
 		text-transform: uppercase
 		letter-spacing: 0.1em
 		margin-bottom: 2em
+
+		.home-page &
+			position: absolute
+			right: 0
+			top: 8px
 
 		a
 			color: #fff
@@ -301,6 +350,9 @@
 		width: 24%
 		font-size: 1.6rem
 
+		.home-page &
+			width: 33%
+
 		&__img
 			right: -30px
 			width: 85%
@@ -311,11 +363,19 @@
 			bottom: 5.2%
 			top: 5.2%
 
+		.home-page &__title
+			max-width: none
+
+		&__message, .home-page &__message
+			position: relative
+			right: auto
+
 	@media only screen and (max-width: $mq-desk-sm)
-		position: relative
-		width: 100%
-		max-width: none
-		height: 320px
+		&, .home-page &
+			position: relative
+			width: 100%
+			max-width: none
+			height: 320px
 
 		&__holder
 			min-height: 320px
@@ -336,13 +396,13 @@
 			bottom: 45px
 			top: 45px
 
-		&__title
+		&__title, .home-page &__title
 			position: absolute
 			bottom: 0
 			margin: 0
 			max-width: 280px
 
-		&__message
+		&__message, .home-page &__message
 			position: absolute
 			right: 0
 			top: 4px
@@ -358,7 +418,14 @@
 .page
 	position: relative
 	background-color: #fff
-	max-width: $layout-width-small
+	max-width: $layout-width - $entry-max-width
+
+	.home-page &
+		max-width: $layout-width - $entry-max-width-home
+
+	@media only screen and (max-width: $mq-desk-lg)
+		&, .home-page &
+			max-width: none
 
 	.entry + &
 		overflow: hidden
@@ -388,15 +455,20 @@
 		display: table-cell
 		vertical-align: middle
 		margin: 0
+		padding-right: 20px
 		font-size: 0
 		letter-spacing: -4px
 
 		li
 			display: inline-block
-			margin: 0 3.2% 0 0
+			margin-right: 3.2%
 			font-size: 1.4rem
 			line-height: 1.5
 			letter-spacing: normal
+
+			.home-page &
+				margin-right: 2.0%
+				font-size: 1.3rem
 
 		a
 			display: inline-block
@@ -408,6 +480,9 @@
 			color: $text-color
 			transition-property: color
 			transition-duration: $animation-speed
+
+			.home-page &
+				letter-spacing: 0.05em
 
 		.no-touchevents & a:hover, .no-touchevents & li.current a, li.current a
 			color: $text-color-alt
@@ -610,48 +685,16 @@
 
 	.swiper-button
 		&-prev
-			left: 20px
+			left: 5px
 
 		&-next
-			right: 20px
+			right: 5px
 
 /*years list end*/
 
 /*gallery*/
 .gallery
 	margin-bottom: $bottom-space
-
-	&__toolbar
-		min-height: 44px
-		position: relative
-		margin-bottom: 1rem
-
-		.swiper-pagination
-			&-fraction
-				position: relative
-				bottom: auto
-				left: auto
-				width: auto
-				text-align: left
-				font-size: 1.4rem
-				line-height: 1.5
-				font-weight: bold
-				color: $text-color
-				text-transform: uppercase
-				letter-spacing: 0.1em
-				padding: 13px 0
-
-			&-current
-				color: $text-color-alt
-
-		.swiper-button
-
-			&-prev
-				left: auto
-				right: 35px
-
-			&-next
-				right: -8px
 
 	&__visual
 		margin-bottom: 2rem
@@ -705,6 +748,30 @@
 			padding-bottom: 0
 
 /*gallery end*/
+
+/*quotes*/
+.quotes
+	margin-bottom: $bottom-space
+
+	.swiper-container
+		margin-bottom: $bottom-space*2
+
+	.swiper-slide
+		background-color: #fff
+
+	.swiper-slide__inner
+
+		h3
+			font-family: $font-alt
+			font-weight: bold
+			font-size: 4.8rem
+			line-height: 1.25
+
+		& > *:last-child
+			margin-bottom: 0
+			padding-bottom: 0
+
+/*quotes end*/
 /*MAIN end*/
 
 /*SIDEBAR*/
