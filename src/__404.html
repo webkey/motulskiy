@@ -1,0 +1,42 @@
+@@include('_head.tpl', {
+	"title": "404",
+	"pageClass": ""
+})
+<div class="wrapper">
+	<div class="layout">
+		@@include('_entry.tpl')
+		<div class="page">
+			<div class="cross">
+				<!--HEADER-->
+				@@include('_header.tpl', {
+					"mainNavItemActive": ""
+				})
+				<!--HEADER end-->
+				<!--MAIN-->
+				<div class="main">
+					<div class="main__holder">
+						<!--CONTENT-->
+						<div class="content-wrap">
+							<div class="content">
+								<h1>Эта страница появится в скором времени</h1>
+								<h4>This page will appear soon</h4>
+
+								<h3><a href="index.html">На главную</a></h3>
+							</div>
+						</div>
+						<!--CONTENT end-->
+
+						<!--SIDEBAR-->
+						@@include('_sidebar.tpl', {
+							"menuItemActive": "1"
+						})
+						<!--SIDEBAR-->
+					</div>
+				</div>
+				<!--MAIN end-->
+			</div>
+			@@include('_footer.tpl')
+		</div>
+	</div>
+</div>
+@@include('_foot.tpl')
