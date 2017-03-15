@@ -31,7 +31,9 @@
 	position: relative
 
 .cross
+	position: relative
 	min-height: 100vh
+	padding-top: $header-height
 
 .main
 	padding: 45px 0 0
@@ -42,6 +44,27 @@
 .main__holder
 	width: 100%
 	+clear
+
+.header
+	height: $header-height
+	position: absolute
+	top: 0
+	width: 100%
+	background-color: #fff
+	box-shadow: 0 5px 25px transparent
+	transition-property: box-shadow, border-color, height
+	transition-duration: $animation-speed
+	z-index: 5
+
+	.header-fixed &
+		position: fixed
+		width: calc(100% - 33.6%)
+		max-width: $layout-width-small
+		box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15)
+		border-color: transparent
+
+	.header-transform &
+		height: $header-height-small
 	
 .content-wrap
 	float: left
@@ -53,38 +76,74 @@
 	padding-right: $layout-grid-space
 	min-height: 50px
 
-	.home-page &
-		margin: 0
-
-.header
-	position: relative
-	z-index: 5
-
 .sidebar
 	float: left
 	margin: 0 0 0 -100%
 	width: $sidebar-left-width
 	padding-left: $layout-grid-space
 
-.footer
-	height: 0
-	position: relative
-	clear: both
-	z-index: 100
+.footer__holder
+	left: $sidebar-left-width
+	width: calc(100% - #{$sidebar-left-width})
 
 .layout
-	max-width: $layout-width
+	//max-width: $layout-width
 	padding: 0 $layout-space-horizontal
 
 .layout-inside
 	margin-left: $layout-grid-space
 	margin-right: $layout-grid-space
 
+@media only screen and (max-width: $mq-desk-md)
+	// layout
+	$layout-grid-space: 50px
+
+	// sidebars
+	$sidebar-left-width: 250px
+
+	.header-fixed .header
+		width: calc(100% - 24%)
+
+	.content
+		margin: 0 0 0 $sidebar-left-width
+		padding-left: $layout-grid-space
+		padding-right: $layout-grid-space
+
+	.sidebar
+		width: $sidebar-left-width
+		padding-left: $layout-grid-space
+
+	.footer__holder
+		left: $sidebar-left-width
+		width: calc(100% - #{$sidebar-left-width})
+
+	.layout-inside
+		margin-left: $layout-grid-space
+		margin-right: $layout-grid-space
+
+@media only screen and (max-width: $mq-desk-sm)
+	$header-height: 72px
+	$header-height-small: 52px
+
+	.header
+		height: $header-height
+		width: 100%
+
+		.header-fixed &
+			width: 100%
+			max-width: none
+
+		.header-transform &
+			height: $header-height-small
+
+
 /*MAIN BLOCKS end*/
 
 /*WIDGETS*/
 @import "sliders"
+@import "forms"
 
+/*object fit fixed for ie9*/
 .object-fit-bg
 	background: no-repeat center center
 
@@ -99,19 +158,36 @@
 		visibility: hidden
 		display: none
 
+/*object fit fixed for ie9 end*/
 /*WIDGETS end*/
 
 /*ENTRY*/
+.entry-spacer
+	width: 33.6%
+	max-width: 640px
+	float: left
+	max-height: 100vh
+	height: 50px
+	transition-property: width
+	transition-duration: $animation-speed
+
+	@media only screen and (max-width: $mq-desk-md)
+		width: 24%
+
+	@media only screen and (max-width: $mq-desk-sm)
+		display: none
+
 .entry
+	//width: 640px
+	width: 33.6%
+	max-width: 640px
 	position: fixed
 	height: 100vh
-	width: 640px
 	overflow-x: hidden
 	overflow-y: auto
 	color: #fff
-
-	@media only screen and (max-width: $mq-desk-lg)
-		//width: 400px
+	transition-property: width
+	transition-duration: $animation-speed
 
 	a
 		text-decoration: none
@@ -137,8 +213,8 @@
 		position: absolute
 		right: 50px
 		bottom: 0
-		max-height: 90vh
-		width: 66%
+		max-height: 90%
+		width: 75%
 		overflow: hidden
 		z-index: -1
 
@@ -158,17 +234,17 @@
 
 	&__frame
 		position: absolute
-		left: 100px
-		right: 100px
-		bottom: 60px
-		top: 60px
+		left: 15.6%
+		right: 15.6%
+		bottom: 6.3%
+		top: 6.3%
 		z-index: 1
 
 	&__logo
 		font-family: $font-alt
 		font-weight: 700
 		font-size: 3.0rem
-		line-height: 1.4
+		line-height: 1.2
 		margin-bottom: 1em
 
 	&__title
@@ -196,6 +272,8 @@
 				border-bottom-color: transparent
 
 	&__copyright
+		position: absolute
+		bottom: 0
 		font-size: 1.6rem
 		line-height: 1.875
 
@@ -203,24 +281,87 @@
 			display: block
 
 	&__contacts
+		position: absolute
+		bottom: 0
 		right: 0
 		font-size: 1.6rem
 		line-height: 1.875
 		text-align: right
 		z-index: 1
 
-	&__copyright, &__contacts
-		position: absolute
-		bottom: 0
+	@media only screen and (max-width: $mq-desk-lg)
+		&__copyright
+			bottom: 50px
+
+		&__contacts
+			right: auto
+			left: 0
+
+	@media only screen and (max-width: $mq-desk-md)
+		width: 24%
+		font-size: 1.6rem
+
+		&__img
+			right: -30px
+			width: 85%
+
+		&__frame
+			left: 9.4%
+			right: 9.4%
+			bottom: 5.2%
+			top: 5.2%
+
+	@media only screen and (max-width: $mq-desk-sm)
+		position: relative
+		width: 100%
+		max-width: none
+		height: 320px
+
+		&__holder
+			min-height: 320px
+			overflow-y: hidden
+			+linear-gradient(to right, #019875, #9800f9)
+
+		&__img
+			max-height: none
+			width: 320px
+			bottom: auto
+			top: 48px
+			right: 50%
+			transform: translate(50%, 0)
+
+		&__frame
+			left: 50px
+			right: 50px
+			bottom: 45px
+			top: 45px
+
+		&__title
+			position: absolute
+			bottom: 0
+			margin: 0
+			max-width: 280px
+
+		&__message
+			position: absolute
+			right: 0
+			top: 4px
+			font-size: 1.4rem
+
+		&__copyright
+			display: none
+
+		&__contacts
+			right: 0
+			left: auto
 
 .page
 	position: relative
+	background-color: #fff
+	max-width: $layout-width-small
 
 	.entry + &
-		margin-left: 640px
-
-		@media only screen and (max-width: $mq-desk-lg)
-			//margin-left: 400px
+		overflow: hidden
 
 /*ENTRY end*/
 
@@ -228,23 +369,32 @@
 .header
 	border-bottom: 1px solid $border-color
 
+	.layout-inside
+		height: 100%
+
 	&__holder
 		position: relative
+		height: 100%
 		+clear
 
 /*main navigation*/
 .nav
-	padding: 35px 0
+	//padding: 35px 30px 35px 0
+	display: table
+	height: 100%
+	width: 100%
 
 	&__list
-		margin: 0 -15px
+		display: table-cell
+		vertical-align: middle
+		margin: 0
 		font-size: 0
 		letter-spacing: -4px
 
 		li
 			display: inline-block
-			margin: 0 1.8%
-			font-size: 14px
+			margin: 0 3.2% 0 0
+			font-size: 1.4rem
 			line-height: 1.5
 			letter-spacing: normal
 
@@ -373,7 +523,7 @@
 				overflow: hidden
 				white-space: nowrap
 				text-overflow: ellipsis
-				max-width: 300px
+				max-width: 260px
 
 		a
 			display: inline-block
@@ -504,7 +654,7 @@
 				right: -8px
 
 	&__visual
-		margin-bottom: 1.5rem
+		margin-bottom: 2rem
 
 		.swiper-slide
 
@@ -564,7 +714,9 @@
 
 /*menu*/
 .menu
-	margin: -20px
+	$m-space: 20px
+
+	margin: -#{$m-space}
 	font-size: 1.6rem
 	line-height: 1.5
 
@@ -587,17 +739,10 @@
 						visibility: visible
 						transform: scale(1)
 
-			ul
-				position: relative
-
-				a
-					padding-left: 50px
-					color: $text-color-light
-
 		a
 			display: block
 			position: relative
-			padding: 14px 20px
+			padding: 14px round($m-space)
 			text-decoration: none
 			color: $text-color
 			transition-property: color
@@ -624,6 +769,24 @@
 			.no-touchevents &:hover
 				color: $text-color-alt
 
+		ul
+			position: relative
+
+			a
+				padding-left: round($m-space*2.5)
+				color: $text-color-light
+
+	@media only screen and (max-width: $mq-desk-md)
+		&
+			$m-space: 15px
+			margin: -#{$m-space}
+
+			&__list
+				a
+					padding: 14px round($m-space)
+
+				ul a
+					padding-left: round($m-space*2.5)
 
 /*menu end*/
 
@@ -631,7 +794,13 @@
 
 /*FOOTER*/
 .footer
-	color: #b2b2b2
+	height: 0
+	position: relative
+	clear: both
+	z-index: 100
+	font-size: 1.6rem
+	line-height: 1.875
+	color: $text-color
 
 	.layout-inside
 		position: relative
@@ -640,11 +809,10 @@
 		position: absolute
 		overflow: hidden
 		cursor: default
-		left: $sidebar-left-width
 		bottom: 0
-		width: calc(100% - #{$sidebar-left-width})
 		top: auto
 		right: auto
+		padding: 48px 0
 
 		&:before
 			content: ''
@@ -658,23 +826,13 @@
 
 /*footer bottom*/
 .footer-bottom
-	$f-text-color: $text-color
-	$f-font-size: 1.6rem
-	$f-line-height: 1.4
-
-	color: $f-text-color
-	font-size: $f-font-size
-	line-height: $f-line-height
-
-	//@media only screen and (max-width: $mq-desk-md)
-
+	color: $text-color
 
 	&__holder
 		position: relative
 		text-align: justify
 		overflow: hidden
 		cursor: default
-		padding: 48px 0
 
 		font-size: 1px
 		line-height: 0
@@ -689,14 +847,16 @@
 
 	&__col
 		display: inline-block
-		vertical-align: middle
-		font-size: $f-font-size
-		line-height: $f-line-height
-		padding: 0
+		vertical-align: top
+		font-size: 1.6rem
+		line-height: 1.875
 		letter-spacing: normal
 
+		&:last-child
+			text-align: right
+
 	a
-		color: $f-text-color
+		color: $text-color
 		text-decoration: none
 
 		.no-touchevents &:hover
@@ -706,11 +866,15 @@
 		font-size: 0
 		letter-spacing: -4px
 
+		&.hide
+			display: none
+
 		li
 			display: inline-block
 			vertical-align: top
 			position: relative
-			font-size: $f-font-size
+			font-size: 1.6rem
+			line-height: 1.875
 			letter-spacing: normal
 			padding-right: 20px
 
@@ -729,6 +893,12 @@
 
 /*footer bottom end*/
 
+/*footer side*/
+.footer-side
+	display: none
+
+/*footer side end*/
+
 /*developer*/
 .developer
 	display: inline-block
@@ -744,7 +914,7 @@
 		display: inline-block
 		vertical-align: top
 		position: relative
-		top: 3px
+		top: 8px
 		width: 154px
 		height: 20px
 		text-align: left
@@ -785,6 +955,57 @@
 		transform: translate(0, -1px)
 
 /*developer end*/
+
+@media only screen and (max-width: $mq-desk-lg)
+	.footer-bottom
+		&__col
+			max-width: 73.9%
+
+			&:last-child
+				max-width: 24.9%
+
+@media only screen and (max-width: $mq-desk-sm)
+	// layout
+	$layout-grid-space: 50px
+
+	// sidebars
+	$sidebar-left-width: 250px
+
+	.footer
+		height: auto
+
+		&__holder
+			left: auto
+			width: 100%
+			padding: 40px 0
+
+			&:after
+				content: ''
+				display: block
+				clear: both
+
+	.footer-bottom
+		position: relative
+		float: left
+		width: 100%
+
+		&__holder
+			padding-left: $sidebar-left-width
+
+		&__contacts.hide
+			display: block
+
+	.footer-side
+		display: block
+		float: left
+		width: $sidebar-left-width
+		margin: 0 0 0 -100%
+		position: relative
+		padding-right: $layout-grid-space
+
+		.copyright .nobr
+			display: block
+
 /*FOOTER end*/
 
 /*======================================================*/

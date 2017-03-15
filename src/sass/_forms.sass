@@ -1,0 +1,194 @@
+/*search-form*/
+.search-form
+	height: 92px
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	background-color: #fff
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+	z-index: 10
+
+	.form-is-open &
+		opacity: 1
+		visibility: visible
+
+	.header &
+		height: 100%
+
+	.layout-inside
+		height: 100%
+
+	form
+		display: table
+		width: 100%
+		height: 100%
+
+	.input-wrapper
+		display: table-cell
+		vertical-align: middle
+		position: relative
+		padding: 0 30px
+		opacity: 0
+		//transform: scale(0.9, 0.9)
+		//transition-property: transform
+		//transition-duration: $animation-speed
+
+		.form-is-open &
+			opacity: 1
+			//transform: scale(1)
+
+	input
+		&[type="search"], &[type="text"]
+			font-size: 20px
+			line-height: 30px
+			color: $text-color
+			padding: 0
+			height: auto
+			background: none
+			box-shadow: none
+			border: none
+			margin: 0
+
+		$ph-color: #999
+		&::-webkit-input-placeholder
+			color: $ph-color !important
+
+		&:-moz-placeholder
+			color: $ph-color !important
+
+		&::-moz-placeholder
+			color: $ph-color !important
+
+		&:-ms-input-placeholder
+			color: $ph-color !important
+
+		&.placeholder
+			color: $ph-color !important
+
+	.btn-search
+		position: absolute
+		left: -14px
+		top: 50%
+		width: 40px
+		height: 40px
+		transform: translate(0, -50%)
+
+		input[type="submit"]
+			padding: 0
+			border: none
+			background: none
+			margin: 0
+
+	//.btn-search
+		position: absolute
+		left: -14px
+		top: 50%
+		width: 40px
+		height: 40px
+		transform: translate(0, -50%)
+
+		span
+			+hide-text
+
+		i
+			position: absolute
+			left: 50%
+			top: 50%
+			width: 12px
+			height: 12px
+			font-size: 0
+			line-height: 0
+			pointer-events: none
+			z-index: 2
+			transform: translate(-50%, -50%)
+
+			&:before, &:after
+				content: ''
+				position: absolute
+				background-color: black
+				border: 2px solid black
+				transition-property: background-color, border-color, transform
+				transition-duration: $animation-speed
+
+			&:before
+				left: 0
+				top: 0
+				width: 10px
+				height: 10px
+				border-radius: 5px
+				background: none
+
+			&:after
+				bottom: 0
+				right: 0
+				height: 2px
+				width: 6px
+				border-radius: 2px
+				border: none
+				transform-origin: right bottom
+				transform: rotate(38deg)
+
+		.no-touchevents &:hover i
+			&:before
+				border-color: $text-color-alt
+
+			&:after
+				background-color: $text-color-alt
+
+		input[type="submit"]
+			padding: 0
+			border: none
+			background: none
+			margin: 0
+
+.btn-search-close
+	position: absolute
+	right: -14px
+	top: 50%
+	width: 40px
+	height: 40px
+	transform: translate(0, -50%)
+
+	span
+		+hide-text
+
+	i
+		position: absolute
+		left: 50%
+		top: 50%
+		width: 10px
+		height: 10px
+		font-size: 0
+		line-height: 0
+		z-index: 2
+		pointer-events: none
+		transform: translate(-50%, -50%)
+
+	i:before, i:after
+		content: ''
+		position: absolute
+		left: 50%
+		top: 50%
+		height: 2px
+		width: 12px
+		margin: -1px 0 0 -6px
+		border-radius: 2px
+		background-color: $text-color
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+	i:before
+		-webkit-transform: rotate(-45deg)
+		-ms-transform: rotate(-45deg)
+		transform: rotate(-45deg)
+
+	i:after
+		-webkit-transform: rotate(45deg)
+		-ms-transform: rotate(45deg)
+		transform: rotate(45deg)
+
+/*search-form end*/

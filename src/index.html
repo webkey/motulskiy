@@ -30,134 +30,334 @@
 	<script src="js/modernizr.min.js"></script>
 </head>
 
-<body>
+<body class="home-page">
 	<!--[if lt IE 9]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 	<!-- >>> head.tpl END <<< -->
 	<div class="wrapper">
-		<!--HEADER-->
-		<header class="header">
-			<div class="layout-inside">
-				<div class="header__holder">
-					<!--main navigation-->
-					<nav class="nav">
-						<ul class="nav__list">
-							<li class="has-drop">
-								<a href="biography.html"><span>Биография</span></a>
-							</li>
-							<li class="has-drop">
-								<a href="photos.html"><span>Фотоальбом</span></a>
-							</li>
-							<li class="has-drop">
-								<a href="videos.html"><span>Видео</span></a>
-							</li>
-							<li class="has-drop">
-								<a href="publications.html"><span>Публикации</span></a>
-							</li>
-							<li class="has-drop">
-								<a href="works.html"><span>Труды</span></a>
-							</li>
-							<li class="has-drop">
-								<a href="links.html"><span>Ссылки</span></a>
-							</li>
-							<li class="has-drop">
-								<a href="blog.html"><span>Блог</span></a>
-							</li>
-						</ul>
-					</nav>
-					<!--main navigation end-->
-					<!--search-->
-					<a href="#" class="btn-search btn-search-js"><i></i><span>Поиск</span></a>
-					<!--search end-->
+		<div class="layout">
+			<div class="entry-spacer">&nbsp;</div>
+			<div class="entry">
+				<div class="entry__holder">
+					<div class="entry__img">
+						<img src="img/photo-main.png" alt="Роман Мотульский" />
+					</div>
+					<div class="entry__frame">
+						<div class="entry__logo"><a href="index.html">Роман Мотульский</a></div>
+						<div class="entry__title">Директор Национальной библиотеки
+							<span class="nobr">Республики Беларусь</span></div>
+						<div class="entry__message"><a href="#"><span>написать сообщение</span></a></div>
+						<div class="entry__copyright">
+							<span class="nobr">&copy; 2005-2017</span> Мотульский Роман Степанович
+						</div>
+						<div class="entry__contacts"><a href="mailto:motulski@nlb.by"><span>motulski@nlb.by</span></a></div>
+					</div>
 				</div>
 			</div>
-		</header>
-		<!--HEADER end-->
-		<!--MAIN-->
-		<div class="main">
-			<div class="layout">
-				<div class="main__holder">
-					<!--CONTENT-->
-					<div class="content-wrap">
-						<div class="content">
-							<!--breadcrumbs-->
-							<div class="breadcrumbs">
-								<ul class="breadcrumbs__list">
-									<li><a href="#"><span>Главная</span></a></li>
-									<li><a href="#"><span>Фотоальбом</span></a></li>
-									<li><a href="#"><span>Научная деятельность</span></a></li>
-									<li><span>Участие в научных мероприятиях</span></li>
-								</ul>
+			<div class="page">
+				<div class="cross">
+					<!--HEADER-->
+					<header class="header">
+						<div class="search-form search-form-js">
+							<div class="layout-inside">
+								<form action="#">
+									<div class="input-wrapper">
+										<input type="search" class="search-field-js" placeholder="Поиск по сайту">
+										<div class="btn-search">
+											<i>&nbsp;</i>
+											<span>Найти</span>
+											<input type="submit" value="">
+										</div>
+										<a href="#" class="btn-search-close btn-search-close-js">
+											<i>&nbsp;</i>
+											<span>Закрыть</span>
+										</a>
+									</div>
+								</form>
 							</div>
-							<!--breadcrumbs end-->
-							<section class="section">
-								<div class="section__title">
-									<h2>Title of Section</h2>
-								</div>
-								<div class="section__holder">
-									Content of Section
-								</div>
-							</section>
 						</div>
-					</div>
-					<!--CONTENT end-->
+						<div class="layout-inside">
+							<div class="header__holder">
+								<!--main navigation-->
+								<nav class="nav">
+									<ul class="nav__list">
+										<li class="has-drop">
+											<a href="biography.html"><span>Биография</span></a>
+										</li>
+										<li class="has-drop current">
+											<a href="photos.html"><span>Фотоальбом</span></a>
+										</li>
+										<li class="has-drop">
+											<a href="videos.html"><span>Видео</span></a>
+										</li>
+										<li class="has-drop">
+											<a href="publications.html"><span>Публикации</span></a>
+										</li>
+										<li class="has-drop">
+											<a href="works.html"><span>Труды</span></a>
+										</li>
+										<li class="has-drop">
+											<a href="links.html"><span>Ссылки</span></a>
+										</li>
+										<li class="has-drop">
+											<a href="blog.html"><span>Блог</span></a>
+										</li>
+									</ul>
+								</nav>
+								<!--main navigation end-->
+								<!--search-->
+								<a href="#" class="btn-search btn-search-open-js"><i></i><span>Поиск</span></a>
+								<!--search end-->
+							</div>
+						</div>
+					</header>
+					<!--HEADER end-->
+					<!--MAIN-->
+					<div class="main">
+						<div class="main__holder">
+							<!--CONTENT-->
+							<div class="content-wrap">
+								<div class="content">
+									<!--breadcrumbs-->
+									<div class="breadcrumbs">
+										<ul class="breadcrumbs__list">
+											<li><a href="#"><span>Главная</span></a></li>
+											<li><a href="#"><span>Фотоальбом</span></a></li>
+											<li><a href="#"><span>Научная деятельность</span></a></li>
+											<li><span>Участие в научных мероприятиях</span></li>
+										</ul>
+									</div>
+									<!--breadcrumbs end-->
 
-					<!--SIDEBAR-->
-					<aside class="sidebar">
-						<div class="sidebar__holder">
-							<!--menu-->
-							<div class="menu">
-								<ul class="menu__list">
-									<li>
-										<a href="#"><span>Научная деятельность</span></a>
-										<ul>
+									<h1>Участие в научных мероприятиях</h1>
+									<!--years list-->
+									<div class="years">
+										<div class="swiper-container years-slider-js">
+											<ul class="years__list swiper-wrapper">
+												<li class="swiper-slide current"><a href="#"><span>2017</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2016</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2015</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2014</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2013</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2012</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2011</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2010</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2009</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2008</span></a></li>
+												<li class="swiper-slide"><a href="#"><span>2007</span></a></li>
+											</ul>
+										</div>
+
+										<div class="swiper-button-prev"><i></i><span>Назад</span></div>
+										<div class="swiper-button-next"><i></i><span>Вперед</span></div>
+									</div>
+									<!--years list end-->
+
+									<p>Защита докторской диссертации на тему «Библиотека как социальный институт: теоретико-методологический аспект». 30 января 2003 г. Белорусский государственный университет культуры и искусств (БГУКИ). Минск.</p>
+
+									<!--gallery-->
+									<div class="gallery">
+										<div class="gallery__toolbar">
+											<div class="swiper-pagination swiper-pagination-fraction">
+												<span class="swiper-pagination-current">2</span> / <span class="swiper-pagination-total">10</span>
+											</div>
+											<div class="swiper-button-prev"><i></i><span>Назад</span></div>
+											<div class="swiper-button-next"><i></i><span>Вперед</span></div>
+										</div>
+										<div class="gallery__visual">
+											<div class="swiper-container gallery-js">
+												<div class="swiper-wrapper">
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-01.jpg" alt="image description" /> </div>
+													</div>
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-02.jpg" alt="image description" /> </div>
+													</div>
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-03.jpg" alt="image description" /> </div>
+													</div>
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-04.jpg" alt="image description" /> </div>
+													</div>
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-05.jpg" alt="image description" /> </div>
+													</div>
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-06.jpg" alt="image description" /> </div>
+													</div>
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-07.jpg" alt="image description" /> </div>
+													</div>
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-08.jpg" alt="image description" /> </div>
+													</div>
+
+													<div class="swiper-slide">
+														<div class="swiper-slide__inner">
+															<img src="img/img-g-09.jpg" alt="image description" /> </div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="gallery__captions">
+											<div class="swiper-container gallery-captions-js">
+												<div class="swiper-wrapper">
+
+													<div class="gallery__caption swiper-slide">
+														<p>01 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+													<div class="gallery__caption swiper-slide">
+														<p>02 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+													<div class="gallery__caption swiper-slide">
+														<p>03 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+													<div class="gallery__caption swiper-slide">
+														<p>04 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+													<div class="gallery__caption swiper-slide">
+														<p>05 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+													<div class="gallery__caption swiper-slide">
+														<p>06 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+													<div class="gallery__caption swiper-slide">
+														<p>07 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+													<div class="gallery__caption swiper-slide">
+														<p>08 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+													<div class="gallery__caption swiper-slide">
+														<p>09 Научный консультант Ю. Н. Столяров, президент отделения Библиотековедения Международной академии информатизации при ООН, доктор пед. наук, профессор, зав. кафедрой документных ресурсов и документационного обеспечения управления Московского
+															государственного университета культуры и искусств.</p>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--gallery end-->
+								</div>
+							</div>
+							<!--CONTENT end-->
+
+							<!--SIDEBAR-->
+							<aside class="sidebar">
+								<div class="sidebar__holder">
+									<!--menu-->
+									<div class="menu">
+										<ul class="menu__list">
 											<li>
-												<a href="#"><span>Защита докторской диссертации</span></a>
+												<a href="#"><span>Научная деятельность</span></a>
+												<ul>
+													<li>
+														<a href="#"><span>Защита докторской диссертации</span></a>
+													</li>
+													<li>
+														<a href="#"><span>Презентации научных трудов</span></a>
+													</li>
+													<li class="current">
+														<a href="#"><span>Участие в научных мероприятиях</span></a>
+													</li>
+												</ul>
 											</li>
 											<li>
-												<a href="#"><span>Презентации научных трудов</span></a>
+												<a href="#"><span>Социокультурная деятельность</span></a>
 											</li>
-											<li class="current">
-												<a href="#"><span>Участие в научных мероприятиях</span></a>
+											<li>
+												<a href="#"><span>Международная деятельность</span></a>
+											</li>
+											<li>
+												<a href="#"><span>Учебно-педагогическая деятельность</span></a>
+											</li>
+											<li>
+												<a href="#"><span>Досуг</span></a>
 											</li>
 										</ul>
-									</li>
-									<li>
-										<a href="#"><span>Социокультурная деятельность</span></a>
-									</li>
-									<li>
-										<a href="#"><span>Международная деятельность</span></a>
-									</li>
-									<li>
-										<a href="#"><span>Учебно-педагогическая деятельность</span></a>
-									</li>
-									<li>
-										<a href="#"><span>Досуг</span></a>
-									</li>
-								</ul>
-							</div>
-							<!--menu end-->
+									</div>
+									<!--menu end-->
+								</div>
+							</aside>
+							<!--SIDEBAR-->
 						</div>
-					</aside>
-					<!--SIDEBAR-->
-
-					<!--ASIDE-->
-					<aside class="aside">
-						<div class="aside__holder">
-							<div class="aside__widget">
-								<h3>Title of Aside Widget</h3>
-								Content of Aside Widget
-							</div>
-							<div class="aside__widget">
-								<h3>Title of Aside Widget</h3>
-								Content of Aside Widget
-							</div>
-						</div>
-					</aside>
-					<!--ASIDE end-->
+					</div>
+					<!--MAIN end-->
 				</div>
+				<!--footer-->
+				<footer class="footer">
+					<div class="layout-inside">
+						<div class="footer__holder">
+							<!--footer bottom-->
+							<div class="footer-bottom">
+								<div class="footer-bottom__holder">
+									<div class="footer-bottom__col">
+										<ul class="footer-bottom__contacts">
+											<li>Тел: <a href="tel:+375172667300">+375 (17) 266-37-00</a></li>
+											<li>Факс: +375 (17) 266-37-06</li>
+										</ul>
+										<ul class="footer-bottom__contacts hide">
+											<li>E-mail: <a href="mailto:motulski@nlb.by">motulski@nlb.by</a></li>
+										</ul>
+									</div>
+									<div class="footer-bottom__col">
+										<!--developer-->
+										<div class="developer">
+											<a href="http://astronim.by/">
+												<span class="developer__label">Разработка сайта &mdash;</span>
+												<span class="developer__logo">Astronim*Support</span>
+											</a>
+										</div>
+										<!--developer end-->
+									</div>
+								</div>
+							</div>
+							<!--footer bottom end-->
+
+							<!--footer side-->
+							<div class="footer-side">
+								<div class="copyright">
+									<span class="nobr">&copy; 2005-2017</span> Мотульский Роман Степанович
+								</div>
+							</div>
+							<!--footer side end-->
+						</div>
+					</div>
+				</footer>
+				<!--footer end-->
 			</div>
 		</div>
-		<!--MAIN end-->
 	</div>
 	<!-- >>> foot.tpl <<< -->
 	<script src="js/jquery.min.js"></script>

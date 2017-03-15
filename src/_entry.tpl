@@ -1,3 +1,4 @@
+<div class="entry-spacer">&nbsp;</div>
 <div class="entry">
 	<div class="entry__holder">
 		<div class="entry__img">

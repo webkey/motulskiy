@@ -45,41 +45,114 @@ function printShow() {
 /*print end*/
 
 /**
+ * toggle header
+ * */
+function toggleHeader(){
+	// external js:
+	// 1) resizeByWidth (resize only width);
+
+	var $page = $('html');
+
+	var previousScrollTop = $(window).scrollTop();
+
+	$(window).on('load scroll debouncedresize', function () {
+		var currentScrollTop = $(window).scrollTop();
+
+
+		var minScrollTop = $('.header').parent().offset().top + 50;
+
+		console.log("minScrollTop: ", minScrollTop);
+
+		$page.toggleClass('header-transform', (currentScrollTop >= minScrollTop));
+
+		var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minScrollTop;
+		$page.toggleClass('header-show', showHeaderPanel);
+		$page.toggleClass('header-hide', !showHeaderPanel);
+
+		previousScrollTop = currentScrollTop;
+	});
+}
+/*toggle header end*/
+
+/**
+ * fixed header
+ * */
+function fixedHeader(){
+	// external js:
+	// 1) resizeByWidth (resize only width);
+
+	var $fixedElement = $('.header');
+
+	if ( $fixedElement.length ) {
+		var $page = $('html');
+
+		// var minScrollTop = $fixedElement.parent().offset().top;
+		// var currentScrollTop = $(window).scrollTop();
+		//
+		// $page.toggleClass('nav-fixed', (currentScrollTop > minScrollTop));
+
+		$(window).on('load resizeByWidth scroll', function () {
+
+			var minScrollTop = $fixedElement.parent().offset().top;
+			var currentScrollTop = $(window).scrollTop();
+
+			$page.toggleClass('header-fixed', (currentScrollTop > minScrollTop));
+		})
+	}
+}
+/*navigation fixed end*/
+
+/**
  * !show form search
  * */
-function showFormSearch() {
-	var $searchForm = $('.js-search-form');
-	if (!$searchForm.length) {
-		return;
-	}
+function showFormSearch(){
+	var $searchFormContainer = $('.search-form-js');
+	if(!$searchFormContainer.length){ return; }
 
-	var $body = $('body');
-	var openedFormClass = 'form-opened';
+	var $html = $('html');
+	var $searchField = $('.search-field-js');
+	var classFormIsOpen = 'form-is-open';
 
-	$searchForm.on('click', '.js-search-open', function () {
-		$body.toggleClass(openedFormClass, !$body.hasClass(openedFormClass));
+	$html.on('click', '.btn-search-open-js', function(e){
 
-		focusingSearchForm();
-	});
+		// !important
+		// var $searchForm = $searchFormContainer.find('form');
+		// if ( $searchForm.find($searchField).val().length && $searchFormContainer.is(':visible') ){
+		// 	$searchForm.submit();
+		// 	return;
+		// }
 
-	$searchForm.on('click', 'input:submit', function () {
-		if(!$body.hasClass(openedFormClass)){
-			$body.addClass(openedFormClass);
-
-			focusingSearchForm();
-
-			return false;
+		if ($html.hasClass(classFormIsOpen)){
+			closeSearchForm($searchFormContainer);
+			return;
 		}
+
+		setTimeout(function () {
+			$searchField.trigger('focus');
+		}, 50);
+
+		$html.addClass(classFormIsOpen);
+
+		e.preventDefault();
+
 	});
 
-	function focusingSearchForm(){
-		$searchForm.find('input[type="search"], input[type="text"]').trigger('focus');
+	$html.on('click', '.btn-search-close-js', function(e){
+		e.preventDefault();
+
+		// $searchField.val(''); // !important
+
+		closeSearchForm($searchFormContainer);
+	});
+
+	function closeSearchForm(){
+		$('html').removeClass(classFormIsOpen)
 	}
 }
 /*show form search end*/
 
 /**
- * sliders initial
+ * !sliders initial
  * */
 function slidersInit() {
 	/*years slider*/
@@ -93,6 +166,7 @@ function slidersInit() {
 			loop: false,
 			slidesPerView: 'auto',
 			watchSlidesVisibility: true,
+			keyboardControl: false,
 
 			nextButton: $thisBtnNext,
 			prevButton: $thisBtnPrev
@@ -112,7 +186,7 @@ function slidersInit() {
 		var galleryTop = new Swiper ($images, {
 			loop: true,
 			// grabCursor: true,
-			keyboardControl: true,
+			keyboardControl: false,
 
 			nextButton: $thisBtnNext,
 			prevButton: $thisBtnPrev,
@@ -135,7 +209,9 @@ function slidersInit() {
 	});
 }
 
-/*css object fit fixed for ie 9*/
+/**
+ * !css object fit fixed for ie 9
+ * */
 function objectFitFixed() {
 	function objectfitContainFixed($img, type) {
 		var imgUrl = $img.prop('src');
@@ -197,8 +273,11 @@ function footerBottom(){
 $(document).ready(function(){
 	placeholderInit();
 	printShow();
+	toggleHeader();
+	fixedHeader();
 	slidersInit();
 	objectFitFixed();
+	showFormSearch();
 
 	footerBottom();
 });

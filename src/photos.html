@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Главная</title>
+	<title>Фотоальбом</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,6 +35,7 @@
 	<!-- >>> head.tpl END <<< -->
 	<div class="wrapper">
 		<div class="layout">
+			<div class="entry-spacer">&nbsp;</div>
 			<div class="entry">
 				<div class="entry__holder">
 					<div class="entry__img">
@@ -56,6 +57,24 @@
 				<div class="cross">
 					<!--HEADER-->
 					<header class="header">
+						<div class="search-form search-form-js">
+							<div class="layout-inside">
+								<form action="#">
+									<div class="input-wrapper">
+										<input type="search" class="search-field-js" placeholder="Поиск по сайту">
+										<div class="btn-search">
+											<i>&nbsp;</i>
+											<span>Найти</span>
+											<input type="submit" value="">
+										</div>
+										<a href="#" class="btn-search-close btn-search-close-js">
+											<i>&nbsp;</i>
+											<span>Закрыть</span>
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
 						<div class="layout-inside">
 							<div class="header__holder">
 								<!--main navigation-->
@@ -86,7 +105,7 @@
 								</nav>
 								<!--main navigation end-->
 								<!--search-->
-								<a href="#" class="btn-search btn-search-js"><i></i><span>Поиск</span></a>
+								<a href="#" class="btn-search btn-search-open-js"><i></i><span>Поиск</span></a>
 								<!--search end-->
 							</div>
 						</div>
@@ -305,8 +324,11 @@
 								<div class="footer-bottom__holder">
 									<div class="footer-bottom__col">
 										<ul class="footer-bottom__contacts">
-											<li>Тел: +375 (17) 266-37-00</li>
+											<li>Тел: <a href="tel:+375172667300">+375 (17) 266-37-00</a></li>
 											<li>Факс: +375 (17) 266-37-06</li>
+										</ul>
+										<ul class="footer-bottom__contacts hide">
+											<li>E-mail: <a href="mailto:motulski@nlb.by">motulski@nlb.by</a></li>
 										</ul>
 									</div>
 									<div class="footer-bottom__col">
@@ -322,6 +344,14 @@
 								</div>
 							</div>
 							<!--footer bottom end-->
+
+							<!--footer side-->
+							<div class="footer-side">
+								<div class="copyright">
+									<span class="nobr">&copy; 2005-2017</span> Мотульский Роман Степанович
+								</div>
+							</div>
+							<!--footer side end-->
 						</div>
 					</div>
 				</footer>

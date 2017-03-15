@@ -41,7 +41,8 @@ gulp.task('htmlCompilation', function () { // Таск формирования 
 });
 
 gulp.task('sassCompilation', function () { // Создаем таск для компиляции sass файлов
-	return gulp.src('src/sass/**/*.+(scss|sass)') // Берем источник
+	// return gulp.src('src/sass/**/*.+(scss|sass)') // Берем источник
+	return gulp.src('src/sass/main.sass') // Берем источник
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			outputStyle: 'expanded', // nested (default), expanded, compact, compressed
