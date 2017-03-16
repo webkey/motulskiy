@@ -1,0 +1,45 @@
+@@include('_head.tpl', {
+	"title": "Написать сообщение",
+	"pageClass": ""
+})
+<div class="wrapper">
+	<div class="layout">
+		@@include('_entry.tpl')
+		<div class="page">
+			<div class="cross">
+				<!--HEADER-->
+				@@include('_header.tpl', {
+					"mainNavItemActive": "message"
+				})
+				<!--HEADER end-->
+				<!--MAIN-->
+				<div class="main">
+					<div class="main__holder">
+						<!--CONTENT-->
+						<div class="content-wrap">
+							<div class="content">
+								<!--breadcrumbs-->
+								@@include('_breadcrumbs.tpl')
+								<!--breadcrumbs end-->
+								<h1>Написать сообщение</h1>
+								<!--user form-->
+								@@include('_user-form.tpl')
+								<!--user form end-->
+							</div>
+						</div>
+						<!--CONTENT end-->
+
+						<!--SIDEBAR-->
+						@@include('_sidebar.tpl', {
+							"menuItemActive": "1"
+						})
+						<!--SIDEBAR-->
+					</div>
+				</div>
+				<!--MAIN end-->
+			</div>
+			@@include('_footer.tpl')
+		</div>
+	</div>
+</div>
+@@include('_foot.tpl')

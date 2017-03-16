@@ -47,7 +47,7 @@
 
 	@media only screen and (max-width: $mq-desk-sm)
 		.entry ~ .page &
-			min-height: calc(100vh - 320px)
+			min-height: calc(100vh - #{$entry-height-mq})
 
 .main
 	padding: 45px 0 0
@@ -72,13 +72,13 @@
 
 	.header-fixed &
 		position: fixed
-		width: calc(100% - 33.6%)
+		width: calc(100% - #{$entry-width})
 		max-width: $layout-width - $entry-max-width
 		box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15)
 		border-color: transparent
 
 		.home-page &
-			width: calc(100% - 50%)
+			width: calc(100% - #{$entry-width-home-page})
 
 	.header-transform &
 		height: $header-height-small
@@ -121,6 +121,17 @@
 	margin-left: $layout-grid-space
 	margin-right: $layout-grid-space
 
+%text-layout-space
+	padding:
+		left: $text-layout-space-horizontal
+		right: $text-layout-space-horizontal
+
+.text-layout
+	@extend %text-layout-space
+	max-width: $text-layout-width
+	margin-left: auto
+	margin-right: auto
+
 @media only screen and (max-width: $mq-desk-md)
 	// layout
 	$layout-grid-space: 50px
@@ -130,13 +141,13 @@
 
 	.header-fixed
 		.header
-			width: calc(100% - 24%)
+			width: calc(100% - #{$entry-width-mq})
 
 		.home-page .header
-			width: calc(100% - 33%)
+			width: calc(100% - #{$entry-width-home-page-mq})
 
 	.content
-		margin: 0 0 0 $sidebar-left-width
+		margin-left: $sidebar-left-width
 		padding-left: $layout-grid-space
 		padding-right: $layout-grid-space
 
@@ -162,10 +173,12 @@
 
 		.header-fixed &, .header-fixed .home-page &
 			width: 100%
+			top: $entry-height-mq-small
 			max-width: none
+			min-width: $layout-min-width
 
 		.header-transform &
-			height: $header-height-small
+			height: $header-height
 
 
 /*MAIN BLOCKS end*/
@@ -194,7 +207,7 @@
 
 /*ENTRY*/
 .entry-spacer
-	width: 33.6%
+	width: $entry-width
 	max-width: $entry-max-width
 	float: left
 	max-height: 100vh
@@ -203,31 +216,61 @@
 	transition-duration: $animation-speed
 
 	.home-page &
-		width: 50%
+		width: $entry-width-home-page
 		max-width: $entry-max-width-home
 
 	@media only screen and (max-width: $mq-desk-md)
-		width: 24%
+		width: $entry-width-mq
 
 		.home-page &
-			width: 33%
+			width: $entry-width-home-page-mq
 
 	@media only screen and (max-width: $mq-desk-sm)
 		display: none
 
+.entry-small-bg
+	display: none
+
+	@media only screen and (max-width: $mq-desk-sm)
+		display: block
+		position: fixed
+		left: 0
+		top: 0
+		height: $entry-height-mq-small
+		width: 100%
+		min-width: $layout-min-width
+		opacity: 0
+		visibility: hidden
+		+linear-gradient(to right, #019875, #9800f9)
+		z-index: 9
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: url(../img/frame-mask.png)
+			z-index: -1
+
+		.header-fixed &
+			opacity: 1
+			visibility: visible
+
 .entry
-	width: 33.6%
+	width: $entry-width
 	max-width: $entry-max-width
 	position: fixed
 	height: 100vh
 	overflow-x: hidden
-	overflow-y: auto
+	overflow-y: hidden
 	color: #fff
 	transition-property: width
 	transition-duration: $animation-speed
 
 	.home-page &
-		width: 50%
+		width: $entry-width-home-page
 		max-width: $entry-max-width-home
 
 	a
@@ -255,14 +298,14 @@
 
 	&__img
 		position: absolute
-		right: 50px
+		left: 125px
 		bottom: 0
 		max-height: 90%
+		min-width: 400px
 		width: 75%
 		overflow: hidden
 		transition-property: width, height
 		transition-duration: $animation-speed
-		z-index: -1
 
 		&:before
 			content: ''
@@ -277,6 +320,16 @@
 			height: 100%
 			width: 100%
 			object-fit: contain
+
+		&-inner
+			position: absolute
+			height: 100%
+			width: 100%
+			left: 0
+			top: 0
+
+			@media only screen and (min-width: #{$mq-desk-sm+1})
+				transform: matrix(1, 0, 0, 1, 0, 0) !important // for js
 
 	&__frame
 		position: absolute
@@ -356,14 +409,14 @@
 			left: 0
 
 	@media only screen and (max-width: $mq-desk-md)
-		width: 24%
+		width: $entry-width-mq
 		font-size: 1.6rem
 
 		.home-page &
-			width: 33%
+			width: $entry-width-home-page-mq
 
 		&__img
-			right: -30px
+			left: 35px
 			width: 85%
 
 		&__frame
@@ -384,20 +437,25 @@
 			position: relative
 			width: 100%
 			max-width: none
-			height: 320px
+			height: $entry-height-mq
+			z-index: 10
 
-		&__holder
-			min-height: 320px
+		&__holder, .home-page &__holder
+			min-height: $entry-height-mq
 			overflow-y: hidden
 			+linear-gradient(to right, #019875, #9800f9)
+
+			&:before
+				background-attachment: fixed
 
 		&__img
 			max-height: none
 			width: 320px
+			min-width: 330px
 			bottom: auto
 			top: 48px
-			right: 50%
-			transform: translate(50%, 0)
+			left: 50%
+			transform: translate(-50%, 0) !important
 
 		&__frame
 			left: 50px
@@ -412,10 +470,23 @@
 			max-width: 280px
 
 		&__message, .home-page &__message
-			position: absolute
-			right: 0
-			top: 4px
+			position: fixed
+			left: 0
+			width: 100%
+			text-align: right
+			min-width: $layout-min-width
+			padding-right: 0 + 50px
+			top: 14px + 45px
 			font-size: 1.4rem
+			will-change: transform
+			z-index: 10
+
+		&__logo, .home-page &__logo
+			position: fixed
+			left: 0 + 50px
+			top: 4px + 45px
+			will-change: transform
+			z-index: 15
 
 		&__copyright
 			display: none
@@ -495,6 +566,9 @@
 
 		.no-touchevents & a:hover, .no-touchevents & li.current a, li.current a
 			color: $text-color-alt
+
+	.nav-drop
+		display: none
 
 /*main navigation end*/
 

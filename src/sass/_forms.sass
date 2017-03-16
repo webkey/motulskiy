@@ -1,3 +1,6 @@
+@import "vars"
+@import "mixins"
+
 /*search-form*/
 .search-form
 	height: 92px
@@ -192,3 +195,98 @@
 		transform: rotate(45deg)
 
 /*search-form end*/
+
+/*user form*/
+.form-title
+	display: block
+	@include font-title
+	padding-bottom: $bottom-space
+	color: $text-color-alt
+	font-size: 2.4rem
+	line-height: 1.2
+	text-align: center
+
+.user-form
+	background: #fff
+	//padding: 20px 30px
+	//border: 1px solid $border-color
+	margin-bottom: $bottom-space
+
+	.text-layout
+		margin-left: 0
+		margin-right: 0
+
+	form
+		display: block
+
+	textarea
+		height: 152px
+		max-height: 152px
+		resize: none
+
+	//.captcha
+		+clear
+
+		img
+			$margin-right: 20px
+			display: inline-block
+			vertical-align: middle
+			max-width: calc(50%)
+			margin-right: $margin-right
+
+			& + input
+				display: inline-block
+				vertical-align: middle
+				width: auto
+				max-width: calc(50% - #{$margin-right} - 10px)
+
+		@media only screen and (max-width: $mq-tablet)
+			img
+				display: block
+				max-width: none
+				margin-bottom: $bottom-space*0.5
+
+				& + input
+					display: block
+					max-width: none
+					width: 100%
+
+	.form-footer
+		padding-top: $bottom-space
+		+clear
+
+	.form-buttons
+		float: left
+		margin-right: 30px
+
+		.btn-submit
+			width: 200px
+
+	.form-note
+		overflow: hidden
+		min-height: 50px
+		font-size: 0
+		letter-spacing: -4px
+		line-height: 25px
+
+		&:before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			min-height: inherit
+
+		&__item
+			display: inline-block
+			vertical-align: middle
+			width: calc(100% - 6px)
+			font-size: 1.4rem
+			line-height: 1.5
+			letter-spacing: normal
+
+	.error-note
+		display: none
+
+	.error > .error-note
+		display: block
+
+/*user form end*/

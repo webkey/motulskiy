@@ -87,7 +87,9 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/device.js/lib/device.min.js',
 		'src/libs/jquery-smartresize/jquery.debouncedresize.js',
 		'src/libs/jquery-placeholder/jquery.placeholder.min.js',
-		'src/libs/swiper/dist/js/swiper.min.js'
+		'src/libs/swiper/dist/js/swiper.min.js',
+		'src/libs/gsap/src/minified/TweenMax.min.js',
+		'src/libs/gsap/src/minified/plugins/ScrollToPlugin.min.js'
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

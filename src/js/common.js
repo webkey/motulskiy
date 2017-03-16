@@ -82,23 +82,26 @@ function fixedHeader(){
 	var $fixedElement = $('.header');
 
 	if ( $fixedElement.length ) {
-		var $page = $('html');
+		var $page = $('html'),
+			$window = $(window),
+			layout = 1200;
 
 		// var minScrollTop = $fixedElement.parent().offset().top;
 		// var currentScrollTop = $(window).scrollTop();
 		//
 		// $page.toggleClass('nav-fixed', (currentScrollTop > minScrollTop));
 
-		$(window).on('load resizeByWidth scroll', function () {
+		$window.on('load resizeByWidth scroll', function () {
 
-			var minScrollTop = $fixedElement.parent().offset().top;
-			var currentScrollTop = $(window).scrollTop();
+			var topLimit = $fixedElement.parent().offset().top;
+			var minScrollTop = (window.innerWidth < layout && $('.entry').length > 0) ? topLimit - 80 : topLimit;
+			var currentScrollTop = $window.scrollTop();
 
 			$page.toggleClass('header-fixed', (currentScrollTop > minScrollTop));
 		})
 	}
 }
-/*navigation fixed end*/
+/*fixed header end*/
 
 /**
  * !show form search
@@ -278,6 +281,114 @@ function objectFitFixed() {
 /*css object fit fixed for ie 9 end*/
 
 /**
+ * !behaviors card product elements
+ * */
+function behaviorEntryBlock() {
+	// external js:
+	// 1) TweetMax;
+	// 2) resizeByWidth;
+	// 3) device.js;
+
+	var $scrollArea = $(window);
+	var $container = $('.entry');
+	var opacityViewElement = '.entry__img-inner, .entry__title, .entry__contacts';
+	var slideViewElement = '.entry__message-js, .entry__logo';
+	var viewport = 1200;
+
+	$scrollArea.on('scroll resize', function () {
+		init();
+	});
+
+	init();
+
+	function init() {
+		if (DESKTOP && window.innerWidth < viewport) {
+			opacityView();
+			fixedView();
+		}
+	}
+
+	$(window).on('resize', function () {
+		if (window.innerWidth >= viewport) {
+
+			if ($container) {
+
+				$(opacityViewElement).css('pointer-events','auto');
+				TweenMax.set(opacityViewElement, {
+					scale: 1,
+					autoAlpha: 1
+				});
+
+				TweenMax.set(slideViewElement, {
+					y: 'auto'
+				});
+			}
+
+		}
+	});
+
+	function opacityView() {
+
+		var $element = $(opacityViewElement);
+
+		if (!$container.length) return;
+
+
+		var scrollTop = $scrollArea.scrollTop(),
+			windowHeight = $(window).height(),
+			containerHeight = $container.outerHeight(),
+			limitHeight = containerHeight - 120,
+			minAlpha = 0.0,
+			minScale = 0.8,
+			alpha,
+			scale,
+			offsetY;
+
+		var alphaValue = (1 - ( scrollTop / limitHeight) ).toFixed(5);
+		var scaleValue = (1 - ( scrollTop * 0.3 / windowHeight)).toFixed(5);
+		var offsetYValue = ( ( scrollTop ) ).toFixed(5);
+
+		alpha = (alphaValue > minAlpha) ? alphaValue : minAlpha;
+		scale = (scaleValue > minScale) ? scaleValue : minScale;
+		offsetY = (offsetYValue < containerHeight) ? offsetYValue : containerHeight;
+
+		console.log(": ", offsetY);
+
+		if (alpha < 1) {
+			$element.css('pointer-events','none');
+		} else {
+			$element.css('pointer-events','auto');
+		}
+
+		TweenMax.to(opacityViewElement, 0, {
+			scale: scale,
+			autoAlpha: alpha,
+			y: offsetY
+		});
+	}
+
+	function fixedView() {
+		var $container = $('.entry');
+
+		if (!$container.length) return;
+
+		var scrollTop = $scrollArea.scrollTop(),
+			containerHeight = $container.outerHeight() - 80,
+			maxOffsetY = 30.0,
+			offsetY;
+
+		var offsetYValue = ( ( scrollTop / containerHeight * maxOffsetY ) ).toFixed(5);
+
+		offsetY = (offsetYValue < maxOffsetY) ? offsetYValue : maxOffsetY;
+
+		TweenMax.to(slideViewElement, 0, {
+			y: -offsetY
+		});
+	}
+}
+/*behaviors card product elements end*/
+
+/**
  * !footer at bottom
  * */
 function footerBottom(){
@@ -289,8 +400,18 @@ function footerBottom(){
 
 		$('.main').after($tplSpacer.clone());
 
-		$(window).on('load resizeByWidth', function () {
-			var footerOuterHeight = $footer.find('.footer__holder').outerHeight();
+		$(window).on('load', function () {
+			setTimeout(function () {
+				layoutFooter();
+			}, 100)
+		});
+
+		$(window).on('debounsedresize', function () {
+			layoutFooter();
+		});
+
+		function layoutFooter() {
+			var footerOuterHeight = $('.footer__holder', $footer).outerHeight();
 			$footer.css({
 				// 'margin-top': -footerOuterHeight
 			});
@@ -298,10 +419,69 @@ function footerBottom(){
 			$('.spacer').css({
 				'height': footerOuterHeight
 			});
-		})
+		}
 	}
 }
 /*footer at bottom end*/
+
+/**
+ * !form success for example
+ * */
+function formSuccessExample() {
+	var $form = $('.user-form form');
+
+	if ( $form.length ) {
+
+		$form.submit(function (event) {
+			var $thisForm = $(this);
+
+			if ($thisForm.parent().hasClass('success-form')) return;
+
+			event.preventDefault();
+
+			testValidateForm($thisForm);
+		});
+
+		// $(':text, input[type="email"], textarea', $form).on('keyup change', function () {
+		// 	var $form = $(this).closest('form');
+		// 	if ($form.parent().hasClass('error-form')) {
+		// 		testValidateForm($form);
+		// 	}
+		// })
+
+	}
+
+	function testValidateForm(form) {
+		var $thisFormWrap = form.parent();
+
+		var $inputs = $(':text, input[type="email"], input[type="password"], textarea', form);
+
+		var inputsLength = $inputs.length;
+		var inputsHasValueLength = $inputs.filter(function () {
+			return $(this).val().length;
+		}).length;
+
+		$thisFormWrap.toggleClass('error-form', inputsLength !== inputsHasValueLength);
+		$thisFormWrap.toggleClass('success-form', inputsLength === inputsHasValueLength);
+
+		$.each($inputs, function () {
+			var $thisInput = $(this);
+			var thisInputVal = $thisInput.val();
+			var $thisInputWrap = $thisInput.parent();
+			var $thisInputWrapSiblings = $thisInput.parent().siblings();
+
+			$thisInput.toggleClass('error', !thisInputVal.length);
+			$thisInput.toggleClass('success', !!thisInputVal.length);
+
+			$thisInputWrap.toggleClass('error', !thisInputVal.length);
+			$thisInputWrap.toggleClass('success', !!thisInputVal.length);
+
+			$thisInputWrapSiblings.toggleClass('error', !thisInputVal.length);
+			$thisInputWrapSiblings.toggleClass('success', !!thisInputVal.length);
+		});
+	}
+}
+/* form success for example end */
 
 /** ready/load/resize document **/
 
@@ -313,8 +493,10 @@ $(document).ready(function(){
 	slidersInit();
 	objectFitFixed();
 	showFormSearch();
+	behaviorEntryBlock();
 
 	footerBottom();
+	formSuccessExample();
 });
 
 $(window).on('load', function(){

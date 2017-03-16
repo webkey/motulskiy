@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>404</title>
+	<title>Написать сообщение</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -316,10 +316,81 @@
 							<!--CONTENT-->
 							<div class="content-wrap">
 								<div class="content">
-									<h1>Эта страница появится в скором времени</h1>
-									<h4>This page will appear soon</h4>
-
-									<h3><a href="index.html">На главную</a></h3>
+									<!--breadcrumbs-->
+									<div class="breadcrumbs">
+										<ul class="breadcrumbs__list">
+											<li><a href="#"><span>Главная</span></a></li>
+											<li><a href="#"><span>Фотоальбом</span></a></li>
+											<li><a href="#"><span>Научная деятельность</span></a></li>
+											<li><span>Участие в научных мероприятиях</span></li>
+										</ul>
+									</div>
+									<!--breadcrumbs end-->
+									<h1>Написать сообщение</h1>
+									<!--user form-->
+									<div class="user-form">
+										<div class="text-layout">
+											<!--<div class="form-title">Форма обратной связи</div>-->
+											<form action="#" method="get">
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="user-form-example__name-field">
+														<span class="error-note">Поле обязательно для заполнения</span>
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="user-form-example__email-field">E-mail<span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<input type="email" id="user-form-example__email-field">
+														<span class="error-note">Поле обязательно для заполнения</span>
+													</div>
+												</div>
+												<div class="input-wrap has--value">
+													<div class="label-holder">
+														<label for="user-form-example__message-field">Сообщение<span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder success">
+														<textarea id="user-form-example__message-field" class="success"></textarea>
+														<span class="error-note">Поле обязательно для заполнения</span>
+													</div>
+												</div>
+												<!--<div class="input-wrap">
+				<div class="label-holder">
+					<span class="label">Прикрепить файл</span>
+				</div>
+				<div class="input-holder upload-file__container">
+					<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">
+				</div>
+			</div>
+			<div class="input-wrap has--value">
+				<div class="label-holder">
+					<label for="user-form-example__captcha-field">Защита от спама:<span class="form-mark">*</span></label>
+				</div>
+				<div class="input-holder">
+					<div class="captcha">
+						<img src="img/captcha.jpg" alt="captcha" />
+						<input type="text" id="user-form-example__captcha-field">
+						<span class="error-note">Введите текст на картинке для защиты от спама</span>
+					</div>
+				</div>
+			</div>-->
+												<div class="form-footer">
+													<div class="form-buttons">
+														<button class="btn-default btn-submit" data-label="Отправить">Отправить</button>
+													</div>
+													<div class="form-note">
+														<div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+									<!--user form end-->
 								</div>
 							</div>
 							<!--CONTENT end-->

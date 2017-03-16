@@ -10,7 +10,7 @@ body
 	line-height: $line-height
 	height: 100%
 	color: $text-color
-	min-width: $mq-tablet
+	min-width: $layout-min-width
 	background: $bg-color url(../img/empty.png) no-repeat fixed
 
 h1, h2, h3, h4, h5, h6
@@ -445,7 +445,7 @@ table
 /*FORM STYLES*/
 /*form layout*/
 .form-row, .input-wrap
-	padding-bottom: $space-bottom-form
+	padding-bottom: $space-bottom-form*1.2
 
 .form-row
 	margin: 0 -15px
@@ -474,6 +474,9 @@ table
 	font-size: inherit
 	line-height: inherit
 	color: $text-color
+
+.error .label-holder, .error label
+	color: $color-form-error
 
 .form-mark
 	display: inline-block
@@ -519,7 +522,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	&.error, .error > &, .no-touchevents &.error, .no-touchevents .error > &
 		color: $color-form-error
 		border-color: $color-form-error
-		box-shadow: 0 0 5px rgba($color-form-error, 0.4)
+		//box-shadow: 0 0 5px rgba($color-form-error, 0.4)
 
 textarea
 	padding: 12px 18px
