@@ -45,15 +45,23 @@
 	min-height: 100vh
 	padding-top: $header-height
 
+	@media only screen and (max-width: $mq-desk-md)
+		padding-top: $header-height-mq-md
+
 	@media only screen and (max-width: $mq-desk-sm)
+		padding-top: $header-height-mq-sm
+
 		.entry ~ .page &
 			min-height: calc(100vh - #{$entry-height-mq})
 
 .main
-	padding: 45px 0 0
+	padding: 48px 0 0
 	position: relative
 	clear: both
 	z-index: 4
+
+	@media only screen and (max-width: $mq-desk-md)
+		padding-top: 40px
 
 .main__holder
 	width: 100%
@@ -64,11 +72,15 @@
 	position: absolute
 	top: 0
 	width: 100%
+	padding-top: 30px
 	background-color: #fff
 	box-shadow: 0 5px 25px transparent
-	transition-property: box-shadow, border-color, height
+	transition-property: box-shadow, border-color, height, padding-top
 	transition-duration: $animation-speed
 	z-index: 5
+
+	.home-page &
+		border-bottom-color: transparent
 
 	.header-fixed &
 		position: fixed
@@ -82,6 +94,7 @@
 
 	.header-transform &
 		height: $header-height-small
+		padding-top: 0
 	
 .content-wrap
 	float: left
@@ -139,6 +152,10 @@
 	// sidebars
 	$sidebar-left-width: 250px
 
+	.header
+		height: $header-height-mq-md
+		padding-top: 3px
+
 	.header-fixed
 		.header
 			width: calc(100% - #{$entry-width-mq})
@@ -164,12 +181,13 @@
 		margin-right: $layout-grid-space
 
 @media only screen and (max-width: $mq-desk-sm)
-	$header-height: 72px
-	$header-height-small: 52px
-
 	.header
-		height: $header-height
+		height: $header-height-mq-sm
+		padding-top: 0
 		width: 100%
+
+		.home-page &
+			border-bottom-color: $border-color
 
 		.header-fixed &, .header-fixed .home-page &
 			width: 100%
@@ -178,7 +196,7 @@
 			min-width: $layout-min-width
 
 		.header-transform &
-			height: $header-height
+			height: $header-height-mq-sm
 
 
 /*MAIN BLOCKS end*/
@@ -335,8 +353,8 @@
 		position: absolute
 		left: 100px
 		right: 100px
-		top: 60px
-		bottom: 60px
+		top: 62px
+		bottom: 62px
 		//left: 15.6%
 		//right: 15.6%
 		//bottom: 6.3%
@@ -348,13 +366,13 @@
 		font-weight: 700
 		font-size: 3.0rem
 		line-height: 1.2
-		margin-bottom: 1em
+		margin-bottom: 1.4em
 
 		@media only screen and (min-width: #{$mq-desk-sm+1})
 			transform: matrix(1, 0, 0, 1, 0, 0) !important // for js
 
 	&__title
-		margin-bottom: 2em
+		margin-bottom: 2.2em
 
 		.home-page &
 			max-width: 50%
@@ -373,7 +391,7 @@
 		.home-page &
 			position: absolute
 			right: 0
-			top: 8px
+			top: 14px
 
 		a
 			color: #fff
@@ -428,8 +446,8 @@
 		&__frame
 			left: 9.4%
 			right: 9.4%
-			bottom: 5.2%
-			top: 5.2%
+			bottom: 43px
+			top: 43px
 
 		.home-page &__title
 			max-width: none
@@ -547,7 +565,7 @@
 
 		li
 			display: inline-block
-			margin-right: 3.2%
+			margin-right: 3.0%
 			font-size: 1.4rem
 			line-height: 1.5
 			letter-spacing: normal
@@ -654,7 +672,7 @@
 		margin: 0
 	
 		li
-			padding: 0 20px 0 0
+			padding: 0 17px 0 0
 			margin: 0
 
 			&:before, &:first-child:before
@@ -857,7 +875,7 @@
 			font-family: $font-alt
 			font-weight: bold
 			font-size: 4.8rem
-			line-height: 1.25
+			line-height: 1.2
 
 		& > *:last-child
 			margin-bottom: 0
@@ -918,7 +936,7 @@
 		a
 			display: block
 			position: relative
-			padding: 14px round($m-space)
+			padding: 16px round($m-space)
 			text-decoration: none
 			color: $text-color
 			transition-property: color

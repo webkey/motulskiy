@@ -3,11 +3,6 @@
 
 /*search-form*/
 .search-form
-	height: 92px
-	position: absolute
-	left: 0
-	top: 0
-	width: 100%
 	background-color: #fff
 	opacity: 0
 	visibility: hidden
@@ -20,7 +15,22 @@
 		visibility: visible
 
 	.header &
-		height: 100%
+		position: absolute
+		left: 0
+		top: 30px
+		bottom: 0
+		width: 100%
+		transition-property: top
+		transition-duration: $animation-speed
+
+		.header-transform &
+			top: 0
+
+		@media only screen and (max-width: $mq-desk-md)
+			top: 3px
+
+		@media only screen and (max-width: $mq-desk-sm)
+			top: 0
 
 	.layout-inside
 		height: 100%

@@ -15,19 +15,19 @@
 								"mainNavItemText": "Фотоальбом",
 								"mainNavItemActive": "@@mainNavItemActive"
 							},{
-								"mainNavItem": "videos",
+								"mainNavItem": "404",
 								"mainNavItemText": "Видео",
 								"mainNavItemActive": "@@mainNavItemActive"
 							},{
-								"mainNavItem": "publications",
+								"mainNavItem": "404",
 								"mainNavItemText": "Публикации",
 								"mainNavItemActive": "@@mainNavItemActive"
 							},{
-								"mainNavItem": "works",
+								"mainNavItem": "404",
 								"mainNavItemText": "Труды",
 								"mainNavItemActive": "@@mainNavItemActive"
 							},{
-								"mainNavItem": "links",
+								"mainNavItem": "404",
 								"mainNavItemText": "Ссылки",
 								"mainNavItemActive": "@@mainNavItemActive"
 							},{

@@ -83,6 +83,8 @@ function fixedHeader(){
 
 	if ( $fixedElement.length ) {
 		var $page = $('html'),
+			$parent = $fixedElement.parent(),
+			ifEntryIs = $('.entry').length > 0,
 			$window = $(window),
 			layout = 1200;
 
@@ -93,8 +95,8 @@ function fixedHeader(){
 
 		$window.on('load resizeByWidth scroll', function () {
 
-			var topLimit = $fixedElement.parent().offset().top;
-			var minScrollTop = (window.innerWidth < layout && $('.entry').length > 0) ? topLimit - 80 : topLimit;
+			var topLimit = $parent.offset().top;
+			var minScrollTop = (window.innerWidth < layout && ifEntryIs) ? topLimit - 80 : topLimit;
 			var currentScrollTop = $window.scrollTop();
 
 			$page.toggleClass('header-fixed', (currentScrollTop > minScrollTop));
