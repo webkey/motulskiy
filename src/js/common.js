@@ -115,7 +115,6 @@ function showFormSearch(){
 	var classFormIsOpen = 'form-is-open';
 
 	$html.on('click', '.btn-search-open-js', function(e){
-		console.log(3);
 		e.stopPropagation();
 
 		// !important
@@ -141,7 +140,6 @@ function showFormSearch(){
 	});
 
 	$html.on('click', '.btn-search-close-js', function(e){
-		console.log(2);
 		e.stopPropagation();
 		e.preventDefault();
 
@@ -151,7 +149,6 @@ function showFormSearch(){
 	});
 
 	$(document).on('click', function () {
-		console.log(1);
 		closeSearchForm();
 	});
 
@@ -302,7 +299,7 @@ function behaviorEntryBlock() {
 	init();
 
 	function init() {
-		if (DESKTOP && window.innerWidth < viewport) {
+		if (window.innerWidth < viewport) {
 			opacityView();
 			fixedView();
 		}
@@ -352,8 +349,6 @@ function behaviorEntryBlock() {
 		scale = (scaleValue > minScale) ? scaleValue : minScale;
 		offsetY = (offsetYValue < containerHeight) ? offsetYValue : containerHeight;
 
-		console.log(": ", offsetY);
-
 		if (alpha < 1) {
 			$element.css('pointer-events','none');
 		} else {
@@ -393,31 +388,26 @@ function behaviorEntryBlock() {
  * */
 function footerBottom(){
 	var $footer = $('.footer');
+
 	if($footer.length){
-		var $tplSpacer = $('<div />', {
-			class: 'spacer'
-		});
+		$('.main').after($('<div class="spacer"></div>'));
 
-		$('.main').after($tplSpacer.clone());
+		setTimeout(function () {
+			layoutFooter();
+		}, 50);
 
-		$(window).on('load', function () {
-			setTimeout(function () {
-				layoutFooter();
-			}, 100)
-		});
-
-		$(window).on('debounsedresize', function () {
+		$(window).on('resizeByWidth', function () {
 			layoutFooter();
 		});
 
 		function layoutFooter() {
-			var footerOuterHeight = $('.footer__holder', $footer).outerHeight();
+			var footerHeight = $('.footer__holder', $footer).outerHeight();
 			$footer.css({
-				// 'margin-top': -footerOuterHeight
+				// 'margin-top': -footerHeight
 			});
 
 			$('.spacer').css({
-				'height': footerOuterHeight
+				'height': footerHeight
 			});
 		}
 	}

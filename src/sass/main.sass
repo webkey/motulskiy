@@ -350,11 +350,17 @@
 		line-height: 1.2
 		margin-bottom: 1em
 
+		@media only screen and (min-width: #{$mq-desk-sm+1})
+			transform: matrix(1, 0, 0, 1, 0, 0) !important // for js
+
 	&__title
 		margin-bottom: 2em
 
 		.home-page &
 			max-width: 50%
+
+		@media only screen and (min-width: #{$mq-desk-sm+1})
+			transform: matrix(1, 0, 0, 1, 0, 0) !important // for js
 
 	&__message
 		font-size: 1.4rem
@@ -549,6 +555,9 @@
 			.home-page &
 				margin-right: 2.0%
 				font-size: 1.3rem
+
+			@media only screen and (max-width: $mq-desk-md)
+				margin-right: 2.0%
 
 		a
 			display: inline-block
@@ -1130,6 +1139,14 @@
 
 			&:last-child
 				max-width: 24.9%
+
+@media only screen and (max-width: $mq-desk-sm)
+	.footer-bottom
+		&__col
+			max-width: 59.9%
+
+			&:last-child
+				max-width: 39.9%
 
 @media only screen and (max-width: $mq-desk-sm)
 	// layout
