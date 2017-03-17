@@ -9,11 +9,35 @@
 							{
 								"mainNavItem": "biography",
 								"mainNavItemText": "Биография",
-								"mainNavItemActive": "@@mainNavItemActive"
+								"mainNavItemActive": "@@mainNavItemActive",
+								"arr": {
+									"key_11":{
+										"key_111":"val_111"
+									},
+									"key_12":"val_l2",
+									"key_13":"val_l3"
+								},
+								"cond": {
+									"index": "key_12",
+									"drop": {
+										"key_111":"val_111",
+										"key_112":"val_112",
+										"key_113":"val_113"
+									}
+								}
 							},{
 								"mainNavItem": "photos",
 								"mainNavItemText": "Фотоальбом",
-								"mainNavItemActive": "@@mainNavItemActive"
+								"mainNavItemActive": "@@mainNavItemActive",
+								"arr": {
+									"key2": {
+										"key21":"val11",
+										"key22":"val12",
+										"key23":"val13"
+									},
+									"key2":"val2",
+									"key3":"val3"
+								}
 							},{
 								"mainNavItem": "404",
 								"mainNavItemText": "Видео",

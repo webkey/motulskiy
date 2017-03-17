@@ -1,31 +1,31 @@
-<li class="has-drop@@if (mainNavItemActive === mainNavItem) { current}">
+<li class="has-drop@@if (mainNavItem === mainNavItemActive) { current}">
 	<a href="@@mainNavItem.html"><span>@@mainNavItemText</span></a>
+
+	@@if (typeof context.arr === "object" ) {
 	<ul class="nav-drop">
+		@@for (var key in arr) {
+			<li>
+				@@if (typeof context.cond === "object" ) {
+					<b class="cond_key">@@cond.index</b>
+					<b class="current_key">`+key+`</b>
+					<div>@@if (`+arr[key]+` !== "val_l2") {
+						<span>`+key+`</span><i>`+arr[key]+`</i>
+						}</div>
+				}
+			</li>
+		}
 		<li>
-			<a href="#"><span>Научная деятельность</span></a>
 			<ul>
-				<li>
-					<a href="#"><span>Защита докторской диссертации</span></a>
-				</li>
-				<li>
-					<a href="#"><span>Презентации научных трудов</span></a>
-				</li>
-				<li class="current">
-					<a href="#"><span>Участие в научных мероприятиях</span></a>
-				</li>
+				@@if (typeof context.cond === "object" ) {
+					@@for (var key in cond.drop) {
+						<li>
+							<span>`+key+`</span><i>`+cond.drop[key]+`</i>
+						</li>
+					}
+				}
 			</ul>
 		</li>
-		<li>
-			<a href="#"><span>Социокультурная деятельность</span></a>
-		</li>
-		<li>
-			<a href="#"><span>Международная деятельность</span></a>
-		</li>
-		<li>
-			<a href="#"><span>Учебно-педагогическая деятельность</span></a>
-		</li>
-		<li>
-			<a href="#"><span>Досуг</span></a>
-		</li>
+
 	</ul>
+	}
 </li>

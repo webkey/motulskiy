@@ -82,6 +82,9 @@
 	.home-page &
 		border-bottom-color: transparent
 
+		.header-fixed &
+			width: calc(100% - #{$entry-width-home-page})
+
 	.header-fixed &
 		position: fixed
 		width: calc(100% - #{$entry-width})
@@ -89,8 +92,6 @@
 		box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15)
 		border-color: transparent
 
-		.home-page &
-			width: calc(100% - #{$entry-width-home-page})
 
 	.header-transform &
 		height: $header-height-small
@@ -318,7 +319,7 @@
 		position: absolute
 		left: 125px
 		bottom: 0
-		max-height: 90%
+		max-height: 80%
 		min-width: 400px
 		width: 75%
 		overflow: hidden

@@ -27,6 +27,11 @@ var gulp = require('gulp'), // Подключаем Gulp
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
 	return gulp.src(['src/__*.html'])
 		.pipe(fileinclude({
+			prefix: '@@',
+			basepath: '@file',
+			context: {
+				name: 'example'
+			},
 			filters: {
 				markdown: markdown.parse
 			}
