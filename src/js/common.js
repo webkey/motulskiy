@@ -210,7 +210,10 @@ function slidersInit() {
 			var galleryThumbs = new Swiper($titles, {
 				// Optional parameters
 				loop: true,
-				effect: 'fade'
+				effect: 'fade',
+				fade: {
+					crossFade: true
+				}
 
 				// Navigation arrows
 				// nextButton: $thisBtnNext,
@@ -357,11 +360,23 @@ function behaviorEntryBlock() {
 			$element.css('pointer-events','auto');
 		}
 
-		TweenMax.to(opacityViewElement, 0, {
-			scale: scale,
-			autoAlpha: alpha,
-			y: offsetY
-		});
+		if (DESKTOP) {
+			TweenMax.to(opacityViewElement, 0, {
+				scale: scale,
+				autoAlpha: alpha,
+				y: offsetY
+			});
+		} else {
+			if (scrollTop > 30) {
+				TweenMax.to(opacityViewElement, 0.2, {
+					autoAlpha: 0
+				});
+			} else {
+				TweenMax.to(opacityViewElement, 0.2, {
+					autoAlpha: 1
+				});
+			}
+		}
 	}
 
 	function fixedView() {
@@ -371,16 +386,28 @@ function behaviorEntryBlock() {
 
 		var scrollTop = $scrollArea.scrollTop(),
 			containerHeight = $container.outerHeight() - 80,
-			maxOffsetY = 30.0,
+			maxOffsetY = 30,
 			offsetY;
 
 		var offsetYValue = ( ( scrollTop / containerHeight * maxOffsetY ) ).toFixed(5);
 
 		offsetY = (offsetYValue < maxOffsetY) ? offsetYValue : maxOffsetY;
 
-		TweenMax.to(slideViewElement, 0, {
-			y: -offsetY
-		});
+		if (DESKTOP) {
+			TweenMax.to(slideViewElement, 0, {
+				y: -offsetY
+			});
+		} else {
+			if (scrollTop > maxOffsetY) {
+				TweenMax.to(slideViewElement, 0.2, {
+					y: -maxOffsetY
+				});
+			} else {
+				TweenMax.to(slideViewElement, 0.2, {
+					y: 0
+				});
+			}
+		}
 	}
 }
 /*behaviors card product elements end*/

@@ -578,6 +578,12 @@
 			@media only screen and (max-width: $mq-desk-md)
 				margin-right: 2.0%
 
+			@media only screen and (max-width: $mq-desk-sm)
+				font-size: 1.3rem
+
+				a
+					letter-spacing: 0.05em
+
 		a
 			display: inline-block
 			text-decoration: none
@@ -854,7 +860,7 @@
 			bottom: 5px
 			border-right: 2px solid $text-color-alt
 
-		> *
+		> *:last-child, & .swiper-slide__inner > *:last-child
 			margin-bottom: 0
 			padding-bottom: 0
 

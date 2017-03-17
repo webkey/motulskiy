@@ -8,18 +8,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Написать сообщение</title>
-	<!--Mobile optimized-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!--Theme color-->
-	<meta name="theme-color" content="#fff">
+	<meta name="theme-color" content="#019875">
+	<!--Viewport-->
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1" />
+	<script>
+		(function(doc) {
+			var viewport = document.getElementById('viewport');
+			if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/Android/i)) {
+				viewport.setAttribute("content", "width=768, maximum-scale=1.2");
+			} else if (navigator.userAgent.match(/iPad/i)) {
+				viewport.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1");
+			}
+		}(document));
+	</script>
 	<!--The Open Graph protocol-->
-	<meta property="og:url" content="http://localhost:3000/">
-	<meta property="og:title" content="Name">
-	<meta property="og:image" content="http://localhost:3000/img/logo.png">
-	<meta property="og:description" content="Описание">
-	<meta property="og:site_name" content="http://localhost:3000/">
+	<meta property="og:url" content="">
+	<meta property="og:title" content="">
+	<meta property="og:image" content="">
+	<meta property="og:description" content="">
+	<meta property="og:site_name" content="">
 	<!--Favicon-->
 	<link href="favicon.ico" rel="shortcut icon">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -81,114 +89,189 @@
 						<div class="layout-inside">
 							<div class="header__holder">
 								<!--main navigation-->
+								<!--  -->
+								<!--  -->
 								<nav class="nav">
 									<ul class="nav__list">
 										<li class="has-drop">
 											<a href="biography.html"><span>Биография</span></a>
-
-
-											<ul class="nav-drop">
-
-												<li>
-
-													<b class="cond_key">key_12</b>
-													<b class="current_key">key_11</b>
-													<div>
-														<span>key_11</span><i>[object Object]</i>
-													</div>
-
-												</li>
-
-												<li>
-
-													<b class="cond_key">key_12</b>
-													<b class="current_key">key_12</b>
-													<div>
-														<span>key_12</span><i>val_l2</i>
-													</div>
-
-												</li>
-
-												<li>
-
-													<b class="cond_key">key_12</b>
-													<b class="current_key">key_13</b>
-													<div>
-														<span>key_13</span><i>val_l3</i>
-													</div>
-
-												</li>
-
-												<li>
-													<ul>
-
-
-														<li>
-															<span>key_111</span><i>val_111</i>
-														</li>
-
-														<li>
-															<span>key_112</span><i>val_112</i>
-														</li>
-
-														<li>
-															<span>key_113</span><i>val_113</i>
-														</li>
-
-
-													</ul>
-												</li>
-
-											</ul>
-
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop nav-drop">
+												<ul class="sub1-nav__list">
+													<li><a href="#"><span>Реквизиты</span></a></li>
+													<li><a href="#"><span>Предыдущие должности</span></a></li>
+													<li><a href="#"><span>Образование</span></a></li>
+													<li><a href="#"><span>Участие в работе коллегиальных органов управления, научных и общественных организаций</span></a></li>
+													<li><a href="#"><span>Участие в международных симпозиумах, конференциях, семинарах и других мероприятиях</span></a></li>
+													<li><a href="#"><span>Награды и поощрения</span></a></li>
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
 										</li>
 										<li class="has-drop">
 											<a href="photos.html"><span>Фотоальбом</span></a>
-
-
-											<ul class="nav-drop">
-
-												<li>
-
-												</li>
-
-												<li>
-
-												</li>
-
-												<li>
-													<ul>
-
-													</ul>
-												</li>
-
-											</ul>
-
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop nav-drop">
+												<ul class="sub1-nav__list">
+													<li><a href="#"><span>Научная деятельность</span></a>
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#"><span>Защита докторской диссертации</span></a></li>
+																<li><a href="#"><span>Презентации научных трудов</span></a></li>
+																<li><a href="#"><span>Участие в научных мероприятиях</span></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+													<li><a href="#"><span>Социокультурная деятельность</span></a>
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#"><span>Культурно-просветительские акции и презентации</span></a></li>
+																<li><a href="#"><span>Художественные выставки и проекты</span></a></li>
+																<li><a href="#"><span>Торжественные мероприятия, церемонии награждения</span></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+													<li><a href="#"><span>Общественная деятельность</span></a>
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#"><span>Приём делегаций</span></a></li>
+																<li><a href="#"><span>Собрания, совещания и заседания</span></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+													<li><a href="#"><span>Международная деятельность</span></a>
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#"><span>Приём зарубежных делегаций</span></a></li>
+																<li><a href="#"><span>Подписание соглашений, договоров</span></a></li>
+																<li><a href="#"><span>Зарубежные визиты</span></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+													<li><a href="#"><span>Учебно-педагогическая деятельность</span></a></li>
+													<li><a href="#"><span>Досуг</span></a></li>
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
 										</li>
 										<li class="has-drop">
 											<a href="404.html"><span>Видео</span></a>
-
-
 										</li>
 										<li class="has-drop">
 											<a href="404.html"><span>Публикации</span></a>
-
-
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop nav-drop">
+												<ul class="sub1-nav__list">
+													<li><a href="#"><span>Хронологический список</span></a></li>
+													<li><a href="#"><span>Р.С. Мотульский в документальных и публицистических фильмах и телепередачах</span></a></li>
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
 										</li>
 										<li class="has-drop">
 											<a href="404.html"><span>Труды</span></a>
-
-
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop nav-drop">
+												<ul class="sub1-nav__list">
+													<li><a href="#"><span>Тематический список</span></a>
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#"><span>Библиотековедение. Общая теория</span></a>
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#"><span>Самостоятельные издания</span></a></li>
+																			<li><a href="#"><span>Статьи</span></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+																<li><a href="#"><span>История библиотечного дела</span></a>
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#"><span>Самостоятельные издания</span></a></li>
+																			<li><a href="#"><span>Статьи</span></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+																<li><a href="#"><span>Система библиотек Республики Беларусь</span></a></li>
+																<li><a href="#"><span>Национальная библиотека Беларуси</span></a>
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#"><span>Самостоятельные издания</span></a></li>
+																			<li><a href="#"><span>Статьи</span></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+																<li><a href="#"><span>Библиотечное дело в зарубежных странах</span></a>
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#"><span>Самостоятельные издания</span></a></li>
+																			<li><a href="#"><span>Статьи</span></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+																<li><a href="#"><span>Библиотечно-информационный менеджмент и маркетинг</span></a>
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#"><span>Самостоятельные издания</span></a></li>
+																			<li><a href="#"><span>Статьи</span></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+																<li><a href="#"><span>Библиотечно-информационное образование</span></a>
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#"><span>Самостоятельные издания</span></a></li>
+																			<li><a href="#"><span>Статьи</span></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+																<li><a href="#"><span>Учебно-методические пособия</span></a>
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#"><span>Учебники и учебные пособия</span></a></li>
+																			<li><a href="#"><span>Методические материалы</span></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+																<li><a href="#"><span>Р.С. Мотульский – составитель, редактор, член редколлегии, рецензент, научный руководитель, автор идеи</span></a></li>
+																<li><a href="#"><span>Интервью с Р.С. Мотульским</span></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+													<li><a href="#"><span>Хронологический список</span></a></li>
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
 										</li>
 										<li class="has-drop">
 											<a href="404.html"><span>Ссылки</span></a>
-
-
 										</li>
 										<li class="has-drop">
 											<a href="blog.html"><span>Блог</span></a>
-
-
 										</li>
 									</ul>
 								</nav>

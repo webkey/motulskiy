@@ -1,0 +1,98 @@
+@@loop('_nav-items.tpl', [
+    {
+        "mainNavItem": "biography",
+        "mainNavItemText": "Биография",
+        "arr": {
+            "key1": {
+                "key11":"val11",
+                "key12":"val12",
+                "key13":"val13"
+            },
+            "key2":"val2",
+            "key3":"val3"
+        },
+        "mainNavItemActive": "@@mainNavItemActive",
+        "arr2": [
+			{
+				"key": "val_11_00"
+			},
+			{
+				"key": "val_11_11"
+			}
+		]
+		// @@for (var key in arr) {} ==> получим `+key+`: 0,1,2...., и `+arr[key]+`: [object Object]
+    }
+])
+
+Передавать {}, [] в переменной нельзя, можно строку "sometext", пустую строку "", или число "1234"
+
+@@if (typeof context.arr === "object" ) {
+    text
+}
+
+@@for (var key in arr) {
+    <li>
+        <span>`+key+`</span><i>`+arr[key]+`</i>
+    </li>
+}
+
+@@for (var i = 0; i < Object.keys(arr).length; i++) {
+    <li>
+        <span>`+i+`</span>
+    </li>
+}
+
+Рабочий пример меню с ОДНОЙ вложеностью. Больше вложеностей слишком сложно создавать.
+В цыкле нет возможности исспользовать переменные (не нашел возможности)
+
+/*_index.tpl*/
+<!--HEADER-->
+@@include('_header.tpl', {
+	"mainNavItemActive": "biography"
+})
+<!--HEADER end-->
+
+/*_header.tpl*/
+<!--main navigation-->
+<nav class="nav">
+	<ul class="nav__list">
+		@@loop('_sub-nav-list.tpl', [
+			{
+				"mainNavItem": "biography",
+				"mainNavItemText": "Биография",
+				"mainNavItemActive": "@@mainNavItemActive",
+				"dropItems": {
+					"Реквизиты":"#",
+					"Предыдущие должности":"#",
+					"Образование":"#",
+					"Повышение квалификации":"#",
+					"Участие в работе коллегиальных органов управления, научных и общественных организаций":"#",
+					"Участие в международных симпозиумах, конференциях, семинарах и других мероприятиях":"#",
+					"Награды и поощрения":"#"
+				}
+			},{
+				"mainNavItem": "video",
+				"mainNavItemText": "Видео",
+				"mainNavItemActive": "@@mainNavItemActive",
+				"dropItems": ""
+			}
+		])
+	</ul>
+</nav>
+<!--main navigation end-->
+
+/*_item.tpl*/
+<li class="has-drop@@if (mainNavItem === mainNavItemActive) { current}">
+	<a href="@@mainNavItem.html"><span>@@mainNavItemText</span></a>
+	@@if (typeof context.dropItems === "object" ) {
+	<div class="sub1-nav__drop js-nav-drop nav-drop">
+		@@if (context.dropItems.Реквизиты) { <div>@@dropItems.Реквизиты</div>}
+		<ul class="sub2-nav__list">
+			@@for (var key in dropItems) {
+				<li>
+					<a href="`+dropItems[key]+`"><span>`+key+`</span></a>
+				</li>
+			}
+		</ul>
+	</div>}
+</li>

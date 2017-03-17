@@ -5,18 +5,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>@@title</title>
-	<!--Mobile optimized-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!--Theme color-->
-	<meta name="theme-color" content="#fff">
+	<meta name="theme-color" content="#019875">
+	<!--Viewport-->
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1" />
+	<script>
+		(function(doc) {
+			var viewport = document.getElementById('viewport');
+			if ( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/Android/i)) {
+				viewport.setAttribute("content", "width=768, maximum-scale=1.2");
+			} else if ( navigator.userAgent.match(/iPad/i) ) {
+				viewport.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1");
+			}
+		}(document));
+	</script>
 	<!--The Open Graph protocol-->
-	<meta property="og:url" content="http://localhost:3000/">
-	<meta property="og:title" content="Name">
-	<meta property="og:image" content="http://localhost:3000/img/logo.png">
-	<meta property="og:description" content="Описание">
-	<meta property="og:site_name" content="http://localhost:3000/">
+	<meta property="og:url" content="">
+	<meta property="og:title" content="">
+	<meta property="og:image" content="">
+	<meta property="og:description" content="">
+	<meta property="og:site_name" content="">
 	<!--Favicon-->
 	<link href="favicon.ico" rel="shortcut icon">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
