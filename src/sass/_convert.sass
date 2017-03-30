@@ -1,0 +1,174 @@
+/*search-form*/
+.search-form
+	height: 80px
+	position: relative
+	display: none
+	background: #fff
+
+	&__header
+		background: #fff
+		z-index: 2
+
+	form
+		width: 100%
+		+clear
+
+	.input-wrapper
+		padding: 15px 55px 15px 60px
+		position: relative
+		opacity: 0
+		transform: scale(0.9, 0.9)
+		transition-property: transform
+		transition-duration: $animation-speed
+
+		.form-is-open &
+			opacity: 1
+			transform: scale(1)
+
+		input[type="search"],
+		input[type="text"]
+			color: #333
+			font-size: 18px
+			line-height: 30px
+			padding: 10px 0
+			height: auto
+			background: none
+			box-shadow: none
+			border: none
+			margin: 0
+
+	input
+		$ph-color: #999
+		&::-webkit-input-placeholder
+			color: $ph-color !important
+
+		&:-moz-placeholder
+			color: $ph-color !important
+
+		&::-moz-placeholder
+			color: $ph-color !important
+
+		&:-ms-input-placeholder
+			color: $ph-color !important
+
+		&.placeholder
+			color: $ph-color !important
+
+	.btn-search
+		float: left
+		font-size: 18px
+		line-height: 32px
+		height: 32px
+		position: absolute
+		top: 50%
+		margin-top: -16px
+		left: 5px
+		width: 32px
+		transition-property: transform
+		transition-duration: $animation-speed
+		transition-timing-function: cubic-bezier(0, 0, 0, 1)
+
+		.depict-search
+			display: block
+			color: #666
+			font-size: 30px
+			line-height: inherit
+			vertical-align: top
+			width: 32px
+			height: 32px
+			position: relative
+			margin: 0
+			padding: 0
+
+			&:before, &:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				border: 1px solid #0059a6
+				border-radius: 1px
+				transition-property: transform
+				transition-duration: $animation-speed*2
+				transition-timing-function: cubic-bezier(0, 0, 0, 1)
+
+			&:before
+				width: 26px
+				height: 26px
+				border-radius: 50%
+				border-width: 2px
+
+			&:after
+				left: 25px
+				top: 20px
+				width: 0
+				height: 14px
+				transform: rotate(-45deg)
+
+			.no-touchevents &:hover
+				transform: scale(1.2, 1.2)
+
+			.no-touchevents &:hover .depict-search
+				color: #0059a6
+
+				&:before,
+				&:after
+					border-color: #0059a6
+
+		input[type="submit"]
+			padding: 0
+			border: none
+			background: none
+			margin: 0
+
+.btn-search-close
+	position: absolute
+	top: 50%
+	right: 0
+	margin: -15px 0 0
+	display: block
+	width: 30px
+	height: 30px
+	cursor: pointer
+	transition-property: transform
+	transition-duration: $animation-speed
+	transition-timing-function: cubic-bezier(0, 0, 0, 1)
+
+	&:before, &:after
+		content: ''
+		position: absolute
+		left: -0.3em
+		top: 0.9em
+		height: 2px
+		width: 40px
+		background: #0059a6
+		border-radius: 5px
+		transition: $animation-speed
+
+	&:before
+		transform: rotate(45deg)
+
+	&:after
+		transform: rotate(-45deg)
+
+	.no-touchevents &:hover
+		transform: scale(1.2, 1.2)
+
+		&:before, &:after
+			background: #0059a6
+
+/*search-form end*/
+
+/*search form opener*/
+.btn-search-open
+	float: left
+	font-size: 16px
+	line-height: 22px
+	color: #fff
+	cursor: pointer
+
+	.depict-search
+		color: #fff
+		font-size: 16px
+		margin-right: 10px
+
+/*search form opener end*/

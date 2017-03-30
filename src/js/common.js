@@ -114,6 +114,7 @@ function showFormSearch(){
 
 	var $html = $('html');
 	var $searchField = $('.search-field-js');
+	var btnSearchCloseClass = 'btn-search-close-js';
 	var classFormIsOpen = 'form-is-open';
 
 	$html.on('click', '.btn-search-open-js', function(e){
@@ -141,17 +142,29 @@ function showFormSearch(){
 
 	});
 
-	$html.on('click', '.btn-search-close-js', function(e){
+	$html.on('click', '.' + btnSearchCloseClass, function(e){
 		e.stopPropagation();
 		e.preventDefault();
-
-		// $searchField.val(''); // !important
 
 		closeSearchForm($searchFormContainer);
 	});
 
-	$(document).on('click', function () {
+	$(document).on('click', function (e) {
 		closeSearchForm();
+	});
+
+	$(document).keyup(function(e) {
+		if ($html.hasClass(classFormIsOpen) && e.keyCode === 27) {
+			closeSearchForm($searchFormContainer);
+		}
+	});
+
+	$searchFormContainer.on('click', function (e) {
+		if($(e.target).hasClass(btnSearchCloseClass)) {
+			return
+		}
+
+		e.stopPropagation();
 	});
 
 	function closeSearchForm(){
